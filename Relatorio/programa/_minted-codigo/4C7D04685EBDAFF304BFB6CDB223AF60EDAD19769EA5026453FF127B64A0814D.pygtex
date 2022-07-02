@@ -1,0 +1,225 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+
+\PYG{k}{class} \PYG{n+nc}{P\PYGZus{}adic\PYGZus{}integer}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{base}\PYG{p}{):}
+        \PYG{k}{if} \PYG{o+ow}{not}\PYG{p}{(}\PYG{n}{is\PYGZus{}prime}\PYG{p}{(}\PYG{n}{base}\PYG{p}{)):}
+            \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}base must be a prime number\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base} \PYG{o}{=} \PYG{n}{base}
+
+        \PYG{c+c1}{\PYGZsh{} digits = [a\PYGZus{}0, a\PYGZus{}1, a\PYGZus{}2, a\PYGZus{}3, ...]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{s} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}[..., \PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+            \PYG{n}{s} \PYG{o}{+=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{):}
+                \PYG{n}{s} \PYG{o}{+=} \PYG{l+s+s2}{\PYGZdq{}, \PYGZdq{}}
+        \PYG{n}{s} \PYG{o}{+=} \PYG{l+s+s2}{\PYGZdq{} ]\PYGZdq{}}
+        \PYG{k}{return} \PYG{n}{s}
+
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}digit}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{digit}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n+nb}{type}\PYG{p}{(}\PYG{n}{digit}\PYG{p}{)} \PYG{o}{!=} \PYG{n+nb}{int} \PYG{o+ow}{or} \PYG{n}{digit} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o+ow}{or} \PYG{n}{digit} \PYG{o}{\PYGZgt{}=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base}\PYG{p}{:}
+            \PYG{k}{raise} \PYG{n+ne}{ValueError}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Invalid digit: }\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{digit}\PYG{p}{))}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{digit}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{partial\PYGZus{}value}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} returns the partial value of the padic integer:}
+        \PYG{c+c1}{\PYGZsh{} a\PYGZus{}0 + a\PYGZus{}1 * base + a\PYGZus{}2 * base**2 + a\PYGZus{}3 * base**3 + ...}
+        \PYG{n}{now} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{)):}
+            \PYG{n}{now} \PYG{o}{+=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base} \PYG{o}{**} \PYG{n}{i}
+        \PYG{k}{return} \PYG{n}{now}
+
+    \PYG{k}{def} \PYG{n+nf}{n\PYGZus{}digits}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{)}
+
+    \PYG{k}{def} \PYG{n+nf}{next\PYGZus{}possibilities}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} returns the possible next partial values of the padic integer,}
+        \PYG{c+c1}{\PYGZsh{} considering the current value and the base of the number.}
+        \PYG{n}{now} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{partial\PYGZus{}value}\PYG{p}{()}
+        \PYG{n}{nextPower} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{now}\PYG{p}{,} \PYG{n}{now} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base}\PYG{o}{**}\PYG{p}{(}\PYG{n}{nextPower} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{),} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base}\PYG{o}{**}\PYG{p}{(}\PYG{n}{nextPower}\PYG{p}{))}
+
+    \PYG{k}{def} \PYG{n+nf}{clone}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{new} \PYG{o}{=} \PYG{n}{P\PYGZus{}adic\PYGZus{}integer}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{base}\PYG{p}{)}
+        \PYG{k}{for} \PYG{n}{digit} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{digits}\PYG{p}{:}
+            \PYG{n}{new}\PYG{o}{.}\PYG{n}{add\PYGZus{}digit}\PYG{p}{(}\PYG{n}{digit}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{new}
+
+
+
+\PYG{k}{class} \PYG{n+nc}{Polynomial}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} [a, b, c, d, ...] \PYGZhy{}\PYGZgt{} a * x**0 + b * x**1 + c * x**2 + ...}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{s} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{)):}
+            \PYG{n}{s} \PYG{o}{+=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{} * x**\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+            \PYG{k}{if} \PYG{n}{i} \PYG{o}{!=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{s} \PYG{o}{+=} \PYG{l+s+s2}{\PYGZdq{} + \PYGZdq{}}
+        \PYG{k}{return} \PYG{n}{s}
+
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}term}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{coefficient}\PYG{p}{,} \PYG{n}{power} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{power} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{coefficient}\PYG{p}{)}
+        \PYG{k}{elif} \PYG{n}{power} \PYG{o}{\PYGZlt{}} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{[}\PYG{n}{power}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{coefficient}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{while} \PYG{o+ow}{not}\PYG{p}{(}\PYG{n}{power} \PYG{o}{\PYGZlt{}} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{)):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{[}\PYG{n}{power}\PYG{p}{]} \PYG{o}{=} \PYG{n}{coefficient}
+
+    \PYG{k}{def} \PYG{n+nf}{evaluate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{p}{):}
+        \PYG{n}{value} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{)):}
+            \PYG{n}{value} \PYG{o}{+=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{coefficients}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{x}\PYG{o}{**}\PYG{n}{i}
+        \PYG{k}{return} \PYG{n}{value}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{read}\PYG{p}{():}
+        \PYG{n}{p} \PYG{o}{=} \PYG{n}{Polynomial}\PYG{p}{()}
+        \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+            \PYG{n}{leitura} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}coefficient for x**}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{i}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ (nothing to stop) = \PYGZsq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}
+            \PYG{k}{if} \PYG{n}{leitura} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{break}
+            \PYG{n}{p}\PYG{o}{.}\PYG{n}{add\PYGZus{}term}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{leitura}\PYG{p}{))}
+            \PYG{n}{i}\PYG{o}{+=}\PYG{l+m+mi}{1}
+        \PYG{k}{return} \PYG{n}{p}
+
+
+\PYG{k}{def} \PYG{n+nf}{generate\PYGZus{}solutions}\PYG{p}{(}\PYG{n}{Polynomial}\PYG{p}{,} \PYG{n}{base}\PYG{p}{,} \PYG{n}{n\PYGZus{}digits}\PYG{p}{):}
+    \PYG{n}{partialSolutions} \PYG{o}{=} \PYG{p}{[]}
+    \PYG{n}{solutions} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{c+c1}{\PYGZsh{} start solutions finding possible x1\PYGZsq{}s}
+    \PYG{k}{for} \PYG{n}{x1} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{base}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{Polynomial}\PYG{o}{.}\PYG{n}{evaluate}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{base} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n}{newSol} \PYG{o}{=} \PYG{n}{P\PYGZus{}adic\PYGZus{}integer}\PYG{p}{(}\PYG{n}{base}\PYG{p}{)}
+            \PYG{n}{newSol}\PYG{o}{.}\PYG{n}{add\PYGZus{}digit}\PYG{p}{(}\PYG{n}{x1}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} a\PYGZus{}0 = x1}
+            \PYG{n}{partialSolutions}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{newSol}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} complete solutions finding compatible xn\PYGZsq{}s, n \PYGZgt{}= 2.}
+    \PYG{k}{while} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{partialSolutions}\PYG{p}{)} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{partSol} \PYG{o}{=} \PYG{n}{partialSolutions}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+        \PYG{n}{n} \PYG{o}{=} \PYG{n}{partSol}\PYG{o}{.}\PYG{n}{n\PYGZus{}digits}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}
+        \PYG{n}{possible\PYGZus{}xns} \PYG{o}{=} \PYG{n}{partSol}\PYG{o}{.}\PYG{n}{next\PYGZus{}possibilities}\PYG{p}{()}
+        \PYG{k}{for} \PYG{n}{c} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{base}\PYG{p}{):}
+            \PYG{n}{xn} \PYG{o}{=} \PYG{n}{possible\PYGZus{}xns}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]}
+            \PYG{k}{if} \PYG{n}{Polynomial}\PYG{o}{.}\PYG{n}{evaluate}\PYG{p}{(}\PYG{n}{xn}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{base}\PYG{o}{**}\PYG{n}{n} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{n}{newSol} \PYG{o}{=} \PYG{n}{partSol}\PYG{o}{.}\PYG{n}{clone}\PYG{p}{()}
+                \PYG{n}{newSol}\PYG{o}{.}\PYG{n}{add\PYGZus{}digit}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}
+                \PYG{k}{if} \PYG{n}{newSol}\PYG{o}{.}\PYG{n}{n\PYGZus{}digits}\PYG{p}{()} \PYG{o}{==} \PYG{n}{n\PYGZus{}digits}\PYG{p}{:}
+                    \PYG{n}{solutions}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{newSol}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{partialSolutions}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{newSol}\PYG{p}{)}
+
+    \PYG{k}{return} \PYG{n}{solutions}
+
+\PYG{k}{def} \PYG{n+nf}{is\PYGZus{}prime}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+  \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{math}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{n}\PYG{p}{))}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{n}\PYG{o}{\PYGZpc{}}\PYG{n}{i}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+      \PYG{k}{return} \PYG{k+kc}{False}
+  \PYG{k}{return} \PYG{k+kc}{True}
+
+\PYG{k}{def} \PYG{n+nf}{find\PYGZus{}next\PYGZus{}prime}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+    \PYG{n}{n} \PYG{o}{+=} \PYG{l+m+mi}{1}
+    \PYG{k}{while} \PYG{o+ow}{not}\PYG{p}{(}\PYG{n}{is\PYGZus{}prime}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)):}
+        \PYG{n}{n} \PYG{o}{+=} \PYG{l+m+mi}{1}
+    \PYG{k}{return} \PYG{n}{n}
+
+\PYG{k}{def} \PYG{n+nf}{find\PYGZus{}n\PYGZus{}solutions\PYGZus{}in\PYGZus{}lowest\PYGZus{}base}\PYG{p}{(}\PYG{n}{Polynomial}\PYG{p}{,} \PYG{n}{n}\PYG{p}{,} \PYG{n}{n\PYGZus{}digits}\PYG{p}{):}
+    \PYG{n}{base} \PYG{o}{=} \PYG{l+m+mi}{2}
+    \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+        \PYG{n}{sols} \PYG{o}{=} \PYG{n}{generate\PYGZus{}solutions}\PYG{p}{(}\PYG{n}{Polynomial}\PYG{p}{,} \PYG{n}{base}\PYG{p}{,} \PYG{n}{n\PYGZus{}digits}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{sols}\PYG{p}{)} \PYG{o}{==} \PYG{n}{n}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n}{sols}
+        \PYG{n}{base} \PYG{o}{=} \PYG{n}{find\PYGZus{}next\PYGZus{}prime}\PYG{p}{(}\PYG{n}{base}\PYG{p}{)}
+
+
+\PYG{k}{def} \PYG{n+nf}{list\PYGZus{}commands}\PYG{p}{():}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}
+\PYG{l+s+s1}{Commands:}
+\PYG{l+s+s1}{    set \PYGZhy{}\PYGZgt{} set the polynomial used to solve the congruence system.}
+\PYG{l+s+s1}{    solve base n\PYGZus{}digits \PYGZhy{}\PYGZgt{} solve the system and print the solutions.}
+\PYG{l+s+s1}{    solveMin n\PYGZus{}solutions n\PYGZus{}digits \PYGZhy{}\PYGZgt{} solve the system in the the lowest prime base possible with n distinct solutions.}
+\PYG{l+s+s1}{    exit \PYGZhy{}\PYGZgt{} stop execution.}
+\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{printSolutions}\PYG{p}{(}\PYG{n}{solutions}\PYG{p}{):}
+    \PYG{n}{abc} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\PYGZsq{}}
+    \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{solutions}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}No solutions found.\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{elif} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{solutions}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}1 solution found.\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{solutions}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ distinct solutions found.\PYGZdq{}}\PYG{p}{)}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{solutions}\PYG{p}{)):}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}x\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}\PYGZob{}\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{abc}\PYG{p}{))} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}\PYGZcb{}\PYGZsq{}} \PYG{k}{if} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{abc}\PYG{p}{)} \PYG{k}{else} \PYG{n}{abc}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ = }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{solutions}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{list\PYGZus{}commands}\PYG{p}{()}
+
+    \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+        \PYG{n}{command} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Enter command: \PYGZsq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}
+        \PYG{n}{command} \PYG{o}{=} \PYG{n}{command}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{)}
+
+        \PYG{k}{if} \PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}set\PYGZsq{}}\PYG{p}{:}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n}{p} \PYG{o}{=} \PYG{n}{Polynomial}\PYG{o}{.}\PYG{n}{read}\PYG{p}{()}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Polynomial set: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{p}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{Exception} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Error: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, polynomial set cancelled.\PYGZdq{}}\PYG{p}{)}
+
+        \PYG{k}{elif} \PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}solve\PYGZsq{}}\PYG{p}{:}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n}{base} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+                \PYG{n}{n\PYGZus{}digits} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])}
+            \PYG{k}{except} \PYG{n+ne}{Exception}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Syntax error...\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{list\PYGZus{}commands}\PYG{p}{()}
+                \PYG{k}{continue}
+
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Solving for x: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{p}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ equiv 0 (mod }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{base}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{**n)\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{sols} \PYG{o}{=} \PYG{n}{generate\PYGZus{}solutions}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,} \PYG{n}{base}\PYG{p}{,} \PYG{n}{n\PYGZus{}digits}\PYG{p}{)}
+                \PYG{n}{printSolutions}\PYG{p}{(}\PYG{n}{sols}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{KeyboardInterrupt}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Solve cancelled by user.\PYGZdq{}}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{Exception} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Error: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, solve cancelled.\PYGZdq{}}\PYG{p}{)}
+
+        \PYG{k}{elif} \PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}solveMin\PYGZsq{}}\PYG{p}{:}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n}{n\PYGZus{}solutions} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+                \PYG{n}{n\PYGZus{}digits} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])}
+            \PYG{k}{except} \PYG{n+ne}{Exception}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Syntax error...\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{list\PYGZus{}commands}\PYG{p}{()}
+                \PYG{k}{continue}
+
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Solving for x: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{p}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ equiv 0 (mod p**n)\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{sols} \PYG{o}{=} \PYG{n}{find\PYGZus{}n\PYGZus{}solutions\PYGZus{}in\PYGZus{}lowest\PYGZus{}base}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,} \PYG{n}{n\PYGZus{}solutions}\PYG{p}{,} \PYG{n}{n\PYGZus{}digits}\PYG{p}{)}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Lowest base with }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{n\PYGZus{}solutions}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ distinct solutions: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{sols}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{base}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{.\PYGZdq{}}\PYG{p}{)}
+                \PYG{n}{printSolutions}\PYG{p}{(}\PYG{n}{sols}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{KeyboardInterrupt}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Solve cancelled by user.\PYGZdq{}}\PYG{p}{)}
+            \PYG{k}{except} \PYG{n+ne}{Exception} \PYG{k}{as} \PYG{n}{e}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Error: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{, solve cancelled.\PYGZdq{}}\PYG{p}{)}
+
+        \PYG{k}{elif} \PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}exit\PYGZsq{}}\PYG{p}{:}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s2}{Exiting...\PYGZdq{}}\PYG{p}{)}
+
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Command not recognized: }\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{command}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))}
+            \PYG{n}{list\PYGZus{}commands}\PYG{p}{()}
+            \PYG{k}{continue}
+
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{)}
+
+\end{Verbatim}

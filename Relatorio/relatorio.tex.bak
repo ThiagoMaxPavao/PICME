@@ -1,0 +1,1040 @@
+\documentclass{article}
+
+\usepackage[portuguese]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{cancel}
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\newcommand*{\carry}[1][1]{\overset{#1}}
+\newcolumntype{B}[1]{r*{#1}{@{\,}r}}
+
+\newtheorem{theorem}{Teorema}
+
+\DeclareMathOperator{\modulo}{mod \ }
+
+\title{Projeto de iniciação científica PICME}
+\author{Thiago Maximo Pavão\\ \small Orientador: Prof. Dr. Lúcio Tunes dos Santos}
+
+\begin{document}
+\maketitle
+
+\section{Nosso sistema numérico}
+
+Diversos métodos de registrar quantidades foram desenvolvidos ao longo da história da humanidade, no entanto um dos sistemas sobressaiu e agora faz parte do nosso cotidiano.
+
+Esse sistema é chamado sistema numérico posicional, que leva esse nome devido a importância da ordem dos dígitos em um número. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{imgs/pontos.png}
+    \caption{Alguns pontos}
+\end{figure}
+
+Quantos pontos há na figura? Difícil saber sem contar um por um. Podemos fazer grupos de dez pontos enquanto há dez pontos completos para agrupar, fazendo isso obtemos:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{imgs/pontosAgrupados.png}
+    \caption{Pontos agrupados em dez}
+\end{figure}
+
+Disposto dessa forma, é fácil saber a quantidade. Temos dois grupos de dez e restam cinco pontos, logo temos 25 pontos. Se tivéssemos mais de cem pontos, seria necessário primeiro fazer grupos de cem, depois dez, e assim por diante para quantidades maiores.
+E isso nos dá o funcionamento do sistema: Um número $A$ de $n+1$ algarismos representa a seguinte quantidade:
+
+\begin{gather}
+a_{n}a_{n-1} \ldots a_{1}a_{0} = \notag\\
+a_{n} \times 10^{n} + a_{n-1} \times 10^{n-1} + \cdots + a_{1} \times 10 + a_{0} = \notag\\
+\sum_{i=n}^{0}a_i \times 10^i
+\end{gather}
+
+Olhando para a quantidade de pontos encontrada temos
+
+\begin{equation*}
+25 = 2 \times 10 + 5 = 2 \times 10^1 + 5 \times 10^0
+\end{equation*}
+
+Que nos diz que existem dois grupos de dez e mais cinco pontos, se trocásse-mos a ordem dos dígitos teríamos o número 52, que nos diz que há 5 grupos de dez e mais dois, daí a importância da ordem dos algarismos.
+\subsection{Os não inteiros}
+
+Esse não é o sistema completo, pois com ele podemos representar apenas números inteiros, como a quantidade de pontos em uma imagem. Então como representar quantidades não inteiras, como a medida da barra a seguir em metros?
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/barra_1.png}
+    \caption{Barra a ser medida}
+\end{figure}
+
+Para realizar a medida, começamos dividindo o metro em dez partes, assim conseguimos visualizar quantos décimos de metro a barra mede:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/barra_2.png}
+    \caption{Barra com a divisão em décimos de metro}
+\end{figure}
+
+Agora é possível saber que a barra mede entre 7 e 8 décimos de metro, para obter mais precisão podemos dividir esse intervalo novamente em dez e explorar quantos centésimos a mais de 7 décimos de metro a barra mede. Fazendo a divisão e ampliando a figura temos:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/barra_3.png}
+    \caption{Barra com a divisão em centésimos de metro e ampliada}
+\end{figure}
+
+Note que com mais 5 centésimos de metro completa-se a medida da barra e portanto a barra mede 7 décimos + 5 centésimos de metro = 0,75 metros. Se não tivéssemos conseguido uma medida exata com centésimos poderíamos dividir novamente em dez, visualizando milésimos e assim por diante.
+
+Com isso podemos representar qualquer número real, que pode ter infinitos algarismos para a direita da vírgula. De forma geral, um número real $A$ qualquer representa a quantidade:
+
+\begin{equation*}
+a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots =
+\end{equation*}
+\begin{equation*}
+a_{n} \times 10^{n} + a_{n-1} \times 10^{n-1} + \cdots + a_{1} \times 10^1 + a_{0} \times 10^0 + a_{-1} \times 10^{-1} + a_{-2} \times 10^{-2} + \cdots= \notag\\
+\end{equation*}
+\begin{equation}
+\sum_{i=n}^{-\infty}a_i \times 10^i
+\end{equation}
+
+\subsection{Por que dez?}
+
+Para contar o número de pontos da primeira figura formamos grupos de dez pontos, tornando fácil identificar a quantidade, também foi comentado que para quantidades maiores que cem pontos, seria necessário primeiro formar grupos de cem e assim por diante. Para medir a barra, cada intervalo foi divido em dez repetidas vezes, nos dando décimos, centésimos, milésimos e assim por diante. Todos esses números são potências de dez, mas por que essa quantidade foi escolhida?
+
+Essa quantidade é denominada base e é uma característica importantíssima do sistema, sem saber em que base um número foi escrito é impossível saber a quantidade que ele representa, escrevemos a base de um número como um subscrito, e por convenção um número sem subscrito está escrito na base dez.
+
+Acredita-se que a quantidade de dedos nas mãos da maior parte das pessoas tenha sido o motivo da base dez ter sido padronizada, porém o que parece contraintuitivo é que essa escolha é arbitrária e não tem nenhuma vantagem sobre outras bases, a não ser a de que já estamos acostumados com ela.
+
+Por exemplo, vamos contar novamente a quantidade de pontos da Figura 1, porém em base três.
+
+Em vez de fazer grupos de dez, cem, mil... faremos grupos de potências de três: três, nove, vinte e sete... Note que não é possível formar um grupo de vinte e sete pontos e portanto devemos começar com grupos de nove e depois de três.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{imgs/pontosAgrupadosEm3.png}
+    \caption{Pontos agrupados em potências de três}
+\end{figure}
+
+Temos dois grupos de nove, dois de três e resta um, portanto a quantidade de pontos é $221_3$. O mesmo poderia ser feito para medir a barra nessa base, ao invés de dividir o intervalo em dez partes, dividiríamos em três. Dessa maneira um número real qualquer $A$ em uma base $b$ representa a quantidade:
+
+\begin{equation*}
+a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b}=
+\end{equation*}
+\begin{equation*}
+a_{n} \times b^{n} + a_{n-1} \times b^{n-1} + \cdots + a_{1} \times b^1 + a_{0} \times b^0 + a_{-1} \times b^{-1} + a_{-2} \times b^{-2} + \cdots=
+\end{equation*}
+\begin{equation}
+\sum_{i=n}^{-\infty}a_i \times b^i
+\end{equation}
+
+Note que o número de algarismos diferentes necessários para escrever um número na base $b$ também é $b$, dado que $10_b = b^1 \times 1 + b^0 \times 0 = b$ e $10_b$ é o primeiro número de dois dígitos contando do 0. Para a base 3, por exemplo, temos os algarismos 0,1,2. Para uma base maior que dez, temos que adicionar símbolos, usualmente são adicionadas as letras maiúsculas. Para a base 16, por exemplo, podemos definir os algarismos como 0-9,A,B,C,D,E,F, onde:
+
+\begin{equation*}
+A_{16} = 10; B_{16} = 11; C_{16} = 12; D_{16} = 13; E_{16} = 14; F_{16} = 15
+\end{equation*}
+
+\subsection{Conversão entre bases}
+
+Para converter um número de uma base $b$ qualquer para a base dez basta escrever o número na forma de somatório e fazer a conta, por exemplo, convertendo o número $A7F_{16}$ para base 10 temos:
+
+\begin{align*}
+A7F_{16} = A_{16} \times 16^2 & + & 7_{16} \times 16^1 & + & F_{16} \times 16^0 & = \\
+10 \times 256 & + & 7 \times 16 & + & 15 \times 1 & = 2687
+\end{align*}
+\begin{equation*}
+A7F_{16} = 2687
+\end{equation*}
+
+O processo inverso é mais complicado, para converter um número na base dez para uma base $b$ qualquer precisamos dividir o número pela base, e guardar o resto da divisão. Após isso dividimos o quociente pela base novamente e assim sucessivamente. O processo termina quando o quociente da divisão é um número menor que $b$, daí, para obter o número na nova base basta juntar o último quociente com os restos na ordem contrária à que eles foram obtidos. Confuso, porém com um exemplo fica fácil compreender:
+
+Vamos converter 25 para base 3:
+
+\[
+    \begin{array}{rrr}
+        25& |\underline{3}&   \\
+         1&              8& |\underline{3}\\
+          &              2&              2
+    \end{array}
+\]
+
+Primeiro dividimos 25 por 3, obtendo resto 1 e quociente 8, este quociente é novamente divido por 3, que nos fornece resto 2 e quociente 2, o novo quociente: 2 é menor que 3 e portanto terminamos a divisão. Com isso basta pegar o quociente da última divisão e juntar com os restos da seguinte forma:
+
+\[
+    \begin{array}{rrr}
+              25& |\underline{3}&               \\
+     \circled{1}&              8& |\underline{3}\\
+        \nwarrow&    \circled{2}&    \circled{2}\\
+                &       \nwarrow&     \leftarrow
+    \end{array}
+\]
+
+\begin{equation*}
+\implies 25 = 221_3
+\end{equation*}
+
+Outro exemplo: Converter 42995 para base 16
+
+\[
+    \begin{array}{rrrr}
+        42995& |\underline{16}&                &                \\
+  \circled{3}&            2687& |\underline{16}&                \\
+     \nwarrow&    \circled{15}&             167& |\underline{16}\\
+             &        \nwarrow&     \circled{7}&    \circled{10}\\
+             &                &        \nwarrow&      \leftarrow
+    \end{array}
+\]
+
+$$10 = A_{16}; 15 = F_{16} \implies 42995 = A7F3_{16}$$
+
+\subsection{Operações em outras bases}
+
+Uma forma de realizar as operações básicas (soma, subtração, multiplicação e divisão) de números em outras bases seria converter os números para a base dez e fazer a conta, e depois converter o resultado para a outra base. Apesar de possível, essa forma seria muito ineficiente, dado que os algorítimos das operações podem ser reutilizados para fazer contas em outras bases de forma muito simples, apenas tomando alguns cuidados.
+
+\subsubsection{Soma}
+
+Assim como na base dez, para conseguir somar dois números quaisquer, basta saber o resultado da soma de dois dígitos na base dada. Por exemplo para a base 3:
+
+\[
+    \begin{array}{l l l}
+        0_3 + 0_3 = 0_3  & 0_3 + 1_3 = 1_3  & 0_3 + 2_3 = 2_3 \\
+        1_3 + 0_3 = 1_3  & 1_3 + 1_3 = 2_3  & 1_3 + 2_3 = 10_3\\
+        2_3 + 0_3 = 2_3  & 2_3 + 1_3 = 10_3 & 2_3 + 2_3 = 11_3 
+    \end{array}
+\]
+
+Esses resultados são obtidos contando-se na base nova, na base 3 os primeiros seis inteiros contando com o zero são:
+
+$$0_3, 1_3, 2_3, 10_3, 11_3, 12_3, \ldots$$
+
+Portanto para obter o resultado de $2_3 + 2_3$ na base 3 basta sair do dois na sequência e andar mais dois números, que nos dá $11_3$. Para somar dois números quaisquer basta fazer o mesmo procedimento, porém lembrando que a soma de dois dígitos é diferente da que estamos acostumados.
+
+Por exemplo, somando $2120_3 + 2221_3$ temos:
+
+\[
+    \begin{array}{@{}B1}
+           \carry 2\carry 120 \\
+                    {} + 2221 \\ \hline
+                        12111 \\
+    \end{array}
+\]
+
+$$\implies 2120_3 + 2221_3 = 12111_3$$
+
+Note que pode ser necessário fazer contas mais complicadas que dois dígitos sendo somados porém que no fundo são simples, por exemplo a conta feita na soma da última coluna: $1_3 + 2_3 + 2_3 = (1_3 + 2_3) + 2_3 = 10_3 + 2_3 = 12_3$
+
+\subsubsection{Subtração}
+
+Para a subtração basta tomar cuidado ao emprestar, quando não é possível fazer a subtração em uma coluna, ``emprestamos''  um da próxima coluna para a atual. Nessas situações, temos que tirar um número de um digito de um de dois dígitos, o que pode causar certa confusão. Veja no exemplo a baixo:
+
+Calcular $12111_3 - 2120_3$
+
+\[
+    \begin{array}{@{}B1}
+                        12111 \\
+                    {} - 2120 \\ \hline
+                            1 \\
+    \end{array}
+\]
+
+Não é possível tirar 2 de 1 então emprestamos da próxima coluna
+
+\[
+    \begin{array}{@{}B1}
+                      12\carry[0]{\cancel 1} \carry11 \\
+                    {} - 2120 \\ \hline
+                            1 \\
+    \end{array}
+\]
+
+Agora, precisamos fazer $11_3 - 2_3$, o resultado não é 9 pois não estamos trabalhando na base dez. Uma forma de fazer a conta é olhando a sequência dos primeiros números já colocada na página passada:
+
+\begin{equation*}
+0_3, 1_3, 2_3, 10_3, 11_3, 12_3, \ldots
+\end{equation*}
+
+Saímos do $11_3$ e voltamos 2, que por fim nos dá que $11_3 - 2_3 = 2_3$. Outra maneira seria converter momentaneamente para base dez, realizar a conta, e voltar para base três: $11_3 - 2_3 = (1 \times 3 + 1) - 2 = 4 - 2 = 2 = 2_3$. Completando a conta temos:
+
+\[
+    \begin{array}{@{}B1}
+                      1\carry[1]{\cancel{2}}\carry[10]{\cancel 1} \carry11 \\
+                    {} - 2120 \\ \hline
+                         2221 \\
+    \end{array}
+\]
+
+\begin{equation*}
+\implies 12111_3 - 2120_3 = 2221_3
+\end{equation*}
+
+Outro problema que pode surgir é emprestar um de zero, conforme ocorre na seguinte conta:
+Calcular $101_3 - 12_3$
+
+\[
+    \begin{array}{@{}B1}
+                        101 \\
+                    {} - 12 \\ \hline
+    \end{array}
+\]
+
+$2_3>1_3$ portanto precisamos emprestar, como não é possível emprestar diretamente do 0, emprestamos do 1 na terceira casa
+
+\[
+    \begin{array}{@{}B1}
+                        \cancel1 \carry 0 1 \\
+                    {} - 12 \\ \hline
+    \end{array}
+\]
+
+\[
+    \begin{array}{@{}B1}
+                        \cancel1 \carry[\cancel12]{\cancel0} \carry1 \\
+                    {} - 12 \\ \hline
+    \end{array}
+\]
+
+O problema ocorre ao emprestar pela segunda vez, temos que tirar um de $10_3$, que nos dá $2_3$ e não nove. Com isso basta terminar a conta
+
+\[
+    \begin{array}{@{}B1}
+                        \cancel1 \carry[\cancel12]{\cancel0} \carry1 \\
+                    {} - 12 \\ \hline
+                         12
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies 101_3 - 12_3 = 12_3
+\end{equation*}
+
+\subsubsection{Multiplicação}
+
+Para a multiplicação, precisamos saber o resultado de multiplicações entre digitos únicos, a tabuada. Na base dez, decoramos as tabuadas de 1 à 9, já na base três, precisamos decorar apenas de 1 e 2. Fazendo a tabela temos:
+
+\begin{center}
+    \begin{tabular}{ c|c|c } 
+        $\times$ & 1 & 2 \\ 
+        \hline
+        1 & 1 & 2 \\ 
+        \hline
+        2 & 2 & 11 \\ 
+    \end{tabular}
+\end{center}
+
+Com isso podemos fazer a multiplicação como usual, por exemplo, calculando $20_3 \times 12_3$
+
+\[
+    \begin{array}{@{}B1}
+                              20\\
+                    {} \times 12\\ \hline
+                             110\\
+                        {} + 20\color{blue}{0}\\ \hline
+                            1010
+    \end{array}
+\]
+
+\begin{equation*}
+\implies 20_3 \times 12_3 = 1010_3
+\end{equation*}
+
+\subsubsection{Divisão}
+
+A divisão é a mais complicada, por envolver todas as outras três operações, mas também tem o mesmo funcionamento com o qual estamos acostumados.
+
+Vamos calcular $1022_3 \div 12_3$:
+
+\[
+    \begin{array}{rr}
+        1022& |\underline{12}\\
+    \end{array}
+\]
+
+$1<12$ e $10<12$ portanto temos que agrupar os 3 primeiros algarismos do dividendo. Note que:
+
+\[
+    \begin{array}{@{}B1}
+                             \carry12\\
+                    {} \times 2\\ \hline
+                             101 
+    \end{array}
+\]
+
+\[
+    \begin{array}{@{}B1}
+                         102\\
+                    {} - 101\\ \hline
+                           1 
+    \end{array}
+\]
+
+Logo o primeiro passo da divisão é:
+
+\[
+    \begin{array}{rr}
+        1022& |\underline{12}\\
+          12&               2\\
+    \end{array}
+\]
+
+Por fim:
+
+\[
+    \begin{array}{rr}
+        1022& |\underline{12}\\
+          12&              21\\
+           0&                \\
+    \end{array}
+\]
+
+\begin{equation*}
+\implies 1022_3 \div 12_3 = 21_3
+\end{equation*}
+
+\subsection{A base 3}
+
+Como já dito, a base dez não tem nenhuma vantagem sobre qualquer outra, tirando a de que já estamos acostumados com ela. No entanto algumas bases podem ter algumas vantagens. Sabemos que quanto maior a base mais símbolos teremos e por consequência mais operações de soma e multiplicação entre algarismos precisam ser decoradas, porém com mais símbolos vem um crescimento mais lento na quantidade de dígitos necessária para representar um valor. O número 42995 por exemplo, escrito em base 16 é representado por $A7F3_{16}$, como visto na seção de conversão de bases. Nesse caso há apenas um algarismo de diferença, porém esse valor cresce cada vez mais para números maiores.
+
+Com isso surge uma pergunta: qual base melhor equilibra o número de algarismos diferentes e o número de dígitos necessários para representar uma faixa de valores. A estratégia para encontrar a reposta é minimizar a multiplicação entre esses dois valores, com isso encontramos $e$ a constante de Euler. Como a base deve ser um número inteiro precisamos encontrar qual base (2 ou 3) minimiza a multiplicação, onde encontra-se 3.
+
+Sabendo disso, faria sentido ter computadores que trabalhassem em base três, e não em binário como qualquer aparelho eletrônico de nosso cotidiano. Computadores ternários tem um grande ganho de eficiência por ganhar muito mais variação numérica para uma mesma quantidade de bits, no caso trits. Esses computadores já foram desenvolvidos mas foram descontinuados. Isso porque a tecnologia da época não permitia a criação de dispositivos capazes de armazenarem três estados diferentes de forma confiável. Hoje, toda a tecnologia desenvolvida para aparelhos binários torna difícil a conversão para dispositivos ternários, mesmo que estes agora possam ser desenvolvidos.
+
+\subsection{A base 12}
+
+Uma característica não comentada até o momento são as dízimas periódicas, qualquer número racional pode ser escrito como a divisão $p/q$ com p e q inteiros e coprimos. Sabe-se que essa divisão pode terminar ou repetir infinitamente, por exemplo, em base 10:
+
+\begin{equation*}
+\frac{1}{4} = 0,25, \frac{1}{3} = 0,33\ldots
+\end{equation*}
+
+Note que $1/4$ termina, enquanto $1/3$ é uma dízima periódica.
+
+Para saber se uma fração terminará em sua forma decimal basta fatorar $q$, se $q$ é composto apenas por potências de 2 e 5 a fração termina, caso contrário, repete infinitamente, parcial ou completamente. Por exemplo:
+
+\begin{equation*}
+\frac{3}{60} = \frac{1}{20}, 20 = 2^2 \times 5^1
+\end{equation*}
+
+Portanto $\frac{3}{60}$ deve terminar. $\frac{3}{60}=0,05$
+
+O 2 e 5 vêm da base escolhida pois dez é divisível por 2 e por 5, 12 é divisível por 2, 3, 4 e 6 e portanto possui muito mais divisores. Por causa disso, diversos números que são dízimas periódicas em base dez terminam em base 12. $1/3 = 0,4_{12}$, $1/6 = 0,2_{12}$, $1/9 = 0,14_{12}$ por exemplo, logo, a base 12 também tem vantagens sobre a base dez e seria mais eficiente em nosso cotidiano.
+
+Apesar de ter uma tabuada maior para decorar, a base 12 traz mais facilidade também nesse aspecto, pois são formados padrões que não se formam na base dez, e que facilitam a memorização.
+
+Por exemplo, a tabuada do três em base 12 seria:
+
+\begin{center}
+    \begin{tabular}{ c|c|c|c|c|c|c|c|c|c|c|c|c|c } 
+        $\times$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & X & E & 10\\ 
+        \hline
+        3 & 0 & 3 & 6 & 9 & 10 & 13 & 16 & 19 & 20 & 23 & 26 & 29 & 30\\ 
+    \end{tabular}
+\end{center}
+
+Surge um padrão 0,3,6,9 na casa das unidades, algo que não ocorre na base dez e facilita a memorização.
+
+\subsection{Formalizando}
+
+Conclui-se que nosso sistema númerico é construído para representar qualquer quantidade real, para saber qual é essa quantidade é necessário saber em que base o número foi escrito. Com isso temos que qualquer número $A = \pm a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b}$ representa a quantidade dada pela equação 3, copiada aqui:
+
+\begin{equation}
+    \pm a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b} = \pm \sum_{i=n}^{-\infty}a_i \times b^i
+\end{equation}
+
+É interessante notar que nesse sistema, a representação de um número não é única, qualquer número que termine pode ser representado de duas formas, como exemplo, o 1 também pode ser escrito como $0,999\ldots$, veja:
+
+\begin{equation*}
+    x=0,999\ldots \implies 10x=9,999\ldots
+\end{equation*}
+\begin{align*}
+    10x - x & = 9,999 \ldots - 0,999 \ldots                 \\
+    9x & = 9,\cancel{999 \ldots} - 0,\cancel{999 \ldots}    \\
+    9x & = 9                                                \\
+    x & = 1
+\end{align*}
+\begin{equation*}
+\implies 0,999\ldots = 1
+\end{equation*}
+
+Outro ponto é que os algorítimos de operações básicas, com exceção ao da divisão, funcionam da direita para a esquerda, isso é um problema quando é necessário fazer operações entre números com representação infinita para a direita, pois não há onde começar. Veja o exemplo:
+
+Qual o resultado de 1,812 794 64... + 3,187 205 35...? Somente com esses dados, é ímpossivel definir qualquer algarismo do resultado, isso porque ele depende do valor das próximas casas do número dado. Por exemplo, se os números fossem 1,812 794 641 e 3,187 205 352 teríamos:
+
+\[
+    \begin{array}{@{}B4}
+                    1,&812&794&641 \\
+               {} + 3,&187&205&352 \\ \hline
+                    4,&999&999&993 \\
+    \end{array}
+\]
+
+Caso os números fossem 1,812 794 649 e 3,187 205 359 teríamos:
+
+\[
+    \begin{array}{@{}B4}
+        \carry1,&\carry8\carry1\carry2&\carry7\carry9\carry4&\carry6\carry49 \\
+               {} + 3,&187&205&359 \\ \hline
+                    5,&000&000&008 \\
+    \end{array}
+\]
+
+Sabemos que o resultado começa com 4,999 999 99 ou 5,000 000 00 porém para saber o resultado exato é necessário ter os dois números com todos seus algarismo definidos, e mesmo com eles, como fazer a conta? começamos o algoritimo de soma pelo primeiro dígito antes da sequência infinita de zeros, em números que terminam, porém isso não pode ser feito em números que tenham infinitos algarismos diferentes de zero para a direita, números que existem em nosso sistema.
+
+Esse problema também pode surgir na subtração e na multiplicação e é o motivo de pensarmos em um sistema que não sofra com ele.
+
+
+\pagebreak
+\section{O sistema esquerdista}
+
+Como foi visto, em nosso sistema os números podem ter algarismos infinitamente para a direita, então podemos dizer que esse é um sistema direitista. Já no sistema esquerdista, os números podem ter algarismos infinitamente para a esquerda, por exemplo o número $\ldots 3333$, esse número é a representação de $-\frac{1}{3}$ veja:
+
+\[
+    \begin{array}{@{}B1}
+                 \ldots3333 \\
+                {} \times 3 \\ \hline
+                 \ldots9999 \\
+    \end{array}
+\]
+
+\[
+    \begin{array}{@{}B1}
+                \ldots\carry9\carry9\carry9\carry9 \\
+                {} + 1 \\ \hline
+                 \ldots0000 \\
+    \end{array}
+\]
+
+\begin{equation*}
+    \ldots0000 = 0
+\end{equation*}
+
+Logo, $\ldots3333$ é um número tal que multiplicado por 3 e somado 1 ao resultado obtemos 0, assim como $-\frac{1}{3}$, logo $-\frac{1}{3}=\ldots3333$. Nesse mesmo exemplo também é possível perceber que -1 no sistema esquerdista é representado por $\ldots999$, pois é o número que somado um nos dá zero.
+
+Antes de seguir em frente, é importante notar que qualquer número inteiro não negativo, e números racionais que terminem tem a mesma representação nos dois sistemas, por exemplo:
+
+\begin{equation*}
+    \frac{5}{4}=1,25=\ldots0001,25=1,25000\ldots
+\end{equation*}
+
+Lembrando que números racionais terminam quando a fração em sua forma mais simplificada tem o denominador somente multiplo de 2 e 5, na base 10. Dessa forma, podemos definir um número número esquerdista qualquer $A=\ldots a_2 a_1 a_0 , a_{-1} a_{-2} \ldots a_{-n}$ que pode ser escrito na forma de somátorio como sendo:
+
+\begin{equation}
+    \ldots a_2 a_1 a_0 , a_{-1} a_{-2} \ldots a_{-n} = \sum_{i=-n}^{\infty}a_i \times 10^i
+\end{equation}
+
+Note que diferentemente da representação dos números do sistema direitista (Equação 4), não temos o sinal + ou - antes do número, isso será explicado mais a frente porém o fato de que $\ldots 999 = -1$ já nos dá uma dica para a razão.
+
+\subsection{Operações}
+
+As operações de soma e multiplicação são iguais as usuais, com a exceção de que como todo número no sistema esquerdista obrigatoriamente tem uma terminação a direita, nunca teremos o problema de não ter onde começar a conta, algo que poderia acontecer no sistema usual. Veja alguns exemplos de soma e multiplicação entre números esquerdistas:
+
+\bigskip
+
+\begin{tabular*}{330pt}{c c}
+
+\begin{minipage}{150pt}
+% Primeira conta
+\[
+    \begin{array}{@{}B5}
+        \ldots 1& 231& 231& \carry 2\carry 34,& \carry 56 \\
+    {}       &    &    &              + 98,& 34 \\ \hline
+        \ldots 1& 231& 231& 332,& 90 \\
+    \end{array}
+\]
+\begin{equation*}
+    \overline{123}4,56 + 98,34 = \overline{123}1 332,9
+\end{equation*}
+\end{minipage}
+
+    &
+
+\begin{minipage}{150pt}
+% Segunda conta
+\[
+    \begin{array}{@{}B1}
+            \ldots \carry0 \carry9 \carry0 91 \\
+       {} + \ldots 90910 \\ \hline
+            \ldots 00001 \\
+    \end{array}
+\]
+\begin{equation*}
+    \overline{09}1 + \overline{09}10 = \ldots 0001=1
+\end{equation*}
+\end{minipage}
+
+\bigskip \bigskip \\
+
+\begin{minipage}{150pt}
+% Terceira conta
+\[
+    \begin{array}{@{}B1}
+    \ldots \carry6 \carry6 \carry6 6 \\
+    {} \times 2 \\ \hline
+            \ldots 3332 \\
+    \end{array}
+\]
+\begin{equation*}
+    \overline{6} \times 2 = \overline{3}2
+\end{equation*}
+\end{minipage}
+
+    &
+
+\begin{minipage}{150pt}
+% Quarta conta
+\[
+    \begin{array}{@{}B1}
+    \ldots 63637 \\
+    {} \times 11 \\ \hline
+        \ldots    \carry 6 \carry 3 \carry 637\\
+    {} + \ldots 3637\color{blue}{0}\\ \hline
+        \ldots 00007
+    \end{array}
+\]
+\begin{equation*}
+    \overline{63}7 \times 11 = 7
+\end{equation*}
+\end{minipage}
+
+\end{tabular*}
+
+\bigskip
+
+Note que uma conta entre dois números que terminem, por exemplo $34 \times 56$, também seria uma conta entre números esquerdistas, visto que ambos os números seriam esquerdistas e direitistas, não foi feito nenhum exemplo desse tipo pois a conta seria exatamente a mesma com a qual estamos acostumados.
+
+\subsubsection{Subtração}
+
+A subtração é feita adicionando-se o inverso aditivo de um número, então, precisamos saber se existe o inverso aditivo de um número no sistema esquerdista. Já vimos que $\ldots 999 + 1 = 0$, e portanto, $\ldots 999$ é o inverso aditivo de 1. Também podemos ver que $\ldots 998$ é o inverso aditivo de 2:
+
+\[
+    \begin{array}{@{}B1}
+                 \ldots\carry9\carry9\carry98 \\
+                {} + 2 \\ \hline
+                 \ldots0000 \\
+    \end{array}
+\]
+
+De forma geral, um número $A=\ldots a_2 a_1 a_0 , a_{-1} a_{-2} \ldots a_{-n}$ tem o inverso aditivo $-A$ da seguinte forma: 
+
+\begin{equation}
+    -A=\ldots (9 - a_2) (9 - a_1) (9 - a_0) , (9 - a_{-1}) (9 - a_{-2}) \ldots (10 - a_{-n}), \text{para } a_{-n} \neq 0
+\end{equation}
+
+Prova:
+
+\[
+    \begin{array}{@{}B9}
+                \ldots& \carry a_2& \carry a_1& \carry a_0,& \carry a_{-1}& \carry a_{-2}& \ldots& \carry a_{-n+1} & a_{-n} \\
+                {} + \ldots& (9 - a_2)& (9 - a_1)& (9 - a_0),& (9 - a_{-1})& (9 - a_{-2})& \ldots& (9 - a_{-n+1}) & (10 - a_{-n})\\ \hline
+                 \ldots&0&0&0&0&0&\ldots&0&0 \\
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies A + (-A) = \ldots 000,0\ldots0 = 0
+\end{equation*}
+
+Então, no sistema esquerdista, qualquer número tem um inverso adititivo que pode ser facilmente calculado. Para fazer uma conta de subtração, primeiro encontra-se o inverso aditivo do número que está subtraindo, depois basta somar os números. Por exemplo:
+
+\bigskip
+$87 - 103 = ?$
+\begin{equation*}
+    87 - 103 = 87 + (-103)
+\end{equation*}
+
+O inverso aditivo de 103 é encontrado pelo método já mostrado (Equação 6), temos que, para $A = 103 = \ldots000103$
+
+\begin{equation*}
+    -A = \ldots(9-0)(9-0)(9-0)(9-1)(9-0)(10-3) = \ldots 999897
+\end{equation*}
+
+Por fim:
+
+\begin{equation*}
+    87 - 103 = 87 + (-103) = 87 + \ldots 999897
+\end{equation*}
+
+\[
+    \begin{array}{@{}B1}
+                \ldots 999 \carry 8 \carry 9 7\\
+                {} + 87 \\ \hline
+                 \ldots99984 \\
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies 87 - 103 = \ldots99984
+\end{equation*}
+
+\bigskip
+
+\bigskip
+$103 - 87 = ?$
+
+Novamente pela equação 6, temos que:
+
+\begin{equation*}
+    -87 = \ldots 99913
+\end{equation*}
+
+\[
+    \begin{array}{@{}B1}
+                \ldots \carry 9 \carry 9 \carry 913\\
+                {} + 103 \\ \hline
+                 \ldots00016 \\
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies 103 - 87 = 16
+\end{equation*}
+
+Note que neste caso não faz sentido encontrar o inverso aditivo de 87, visto que o resultado da subtração obtido pelo algorimo usual de subtração nos daria um número do sistema esquerdista, no caso, 16. 
+
+Na realidade, é possível encontrar o resultado de qualquer subtração sem encontrar o inverso aditivo, visto que podemos `emprestar' um da sequência infinita de zeros. Por exemplo, a conta 87 - 103 poderia ter sido realizada da seguinte forma:
+
+\[
+    \begin{array}{@{}B1}
+                \ldots 00087\\
+                {} - 103 \\ \hline
+                84
+    \end{array}
+\]
+Não é possível tirar 1 de 0 então emprestamos:
+\[
+    \begin{array}{@{}B1}
+                \ldots \carry[9]{\cancel{0}} \carry[9]{\cancel{0}} \carry 0 87\\
+                {} - 103 \\ \hline
+                \ldots 99984
+    \end{array}
+\]
+
+Por fim, também podemos encontrar o inverso aditivo de números com dizíma, por exemplo:
+
+\bigskip
+$A = \ldots76767630, -A = ?$
+
+Novamente pela equação 6, temos que:
+\begin{equation*}
+    -A = \ldots(9-7)(9-6)(9-7)(9-6)(10-3)0 = \ldots 232370
+\end{equation*}
+
+
+
+\subsubsection{Divisão}
+
+Da mesma forma que com a subtração, a divisão é dada pela multiplicação pelo inverso, então precisamos saber se um número esquerdista $q$ tem um inverso $\frac{1}{q}$. Lembrando que frações que terminam em nosso sistema usual tem o mesmo resultado no sistema esquerdista, por exemplo $\frac{1}{4} = 0,25$ em ambos os sistemas, pois todos os números envolvidos são esquerdistas e direitistas.
+
+É possível encontrar o inverso de um número realizando o algoritimo de divião longa que já sabemos, porém com a diferença que a conta é feita da direita para a esquerda, usando o operador módulo.
+
+\begin{center}\fbox{\begin{minipage}{300pt}
+
+\textbf{O operador módulo}\\
+
+O operador módulo nos da o resto da divisão de um número por outro. Por exemplo, $5\ \modulo 3 = 2$, esse operador também pode ser usado da seguinte forma:
+
+\begin{equation}
+    a \equiv b \ (\modulo c)
+\end{equation}
+
+Uma expressão como essa nos diz que o resto da divisão de $a$ por $c$ e de $b$ por $c$ são iguais, e será bastante utilizada na divisão entre números esquerdistas.
+        
+\end{minipage}}\end{center}
+
+Para encontrar o inverso de 3, $\frac{1}{3}$, fazemos a conta da seguinte forma:
+
+\[
+    \begin{array}{rr}
+        \ldots 0001& |\underline{3}
+    \end{array}
+\]
+
+O algarismo mais a direita do quociente é dado por $3a \equiv 1 \ (\modulo 10)$, em outras palavras, queremos que o digito das unidades da multiplicação de a pelo divisor seja igual ao digito das unidades do dividendo. Temos que $a=7$ então:
+
+\[
+    \begin{array}{rr}
+        \ldots 0001& |\underline{3}\\
+        \underline{-21}&             7
+    \end{array}
+\]
+
+\bigskip
+
+\[
+    \begin{array}{@{}B1}
+                \ldots \carry[9]{\cancel{0}} \carry[9]{\cancel{0}} \carry 0 1\\
+                {} - 21 \\ \hline
+                \ldots 99980
+    \end{array}
+\]
+
+\bigskip
+
+\[
+    \begin{array}{rr}
+        \ldots 0001& |\underline{3}\\
+        \underline{-21}&             7\\
+        \ldots 9998 \hphantom{1}&
+    \end{array}
+\]
+
+O próximo digito será dado por $3a \equiv 8 \ (\modulo 10),\ a=6$.
+
+\[
+    \begin{array}{rr}
+        \ldots 0001& |\underline{\hphantom{6}3}\\
+                \underline{-21}&             67\\
+        \ldots 9998\hphantom{1}& \\
+                \underline{-18}\hphantom{1}& \\
+        \ldots 9998\hphantom{81}&
+    \end{array}
+\]
+
+Como o resto se repetiu, não precisamos continuar a divisão. Temos que:
+
+\[
+    \begin{array}{rr}
+        \ldots 0001& |\underline{\hphantom{\ldots 66}3}\\
+                \underline{-21}&             \ldots 667\\
+        \ldots 9998\hphantom{1}& \\
+        \underline{-18}\hphantom{1}& \\
+        \ldots 9998\hphantom{81}&
+    \end{array}
+\]
+
+E portanto $\frac{1}{3} = \ldots 667$
+
+\bigskip
+
+Com o valor de um terço podemos obter facilmente múltiplos dele, como 2/3, 4/3, 5/3 e outras frações que sejam da forma $1/(3\times 2^n 5^m), \ n,m \in \mathbb{Z}^+$, por exemplo 1/6 e 1/15, da seguinte forma:
+
+\bigskip
+
+\begin{tabular*}{330pt}{c c}
+
+\begin{minipage}{150pt}
+% Primeira conta
+\[
+    \begin{array}{@{}B1}
+                \ldots \carry 6 \carry 6 \carry 6 7\\
+                {} \times 2 \\ \hline
+                \ldots 3334
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies \frac{2}{3} = 2 \times \frac{1}{3} = \overline3 4
+\end{equation*}
+\end{minipage}
+
+    &
+
+\begin{minipage}{150pt}
+% Segunda conta
+\[
+    \begin{array}{@{}B1}
+                \ldots \carry[3] 6 \carry[3] 6 \carry[3] 6 7\\
+                {} \times 0,5 \\ \hline
+                \ldots 333,5
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies \frac{1}{6} = \frac{1}{2} \times \frac{1}{3} = \overline3,5
+\end{equation*}
+\end{minipage}
+
+\end{tabular*}
+
+O processo de longa divisão pode ser feito para encontrar o valor de $1/7=\overline{285714}3$, com ele podemos encontrar o valor de $-1/7=\overline{142857}$ que tem uma grande semelhança com o valor de $1/7$ no sistema direitista, $1/7=0,\overline{142857}$. Isso ocorre pois
+
+\begin{equation*}
+    7 \times \frac{1}{7} = 7 \times 0,\overline{142857} = 0,\overline{999999} = 1
+\end{equation*}
+
+no sistema direitista, e
+
+\begin{equation*}
+    7 \times \left( -\frac{1}{7} \right) = 7 \times \overline{142857} = \overline{999999} = -1
+\end{equation*}
+
+no sistema esquerdita. O mesmo ocorre para outros valores de $1/q$ se $q$ for coprimo com 10, então podemos anunciar o seguinte teorema:
+
+\begin{theorem}
+    Se $q$ e 10 forem coprimos, no sistema direitista $1/q = 0,\overline{b_1 \ldots b_k}$ se, e somente se, no sistema esquerdista $-1/q = \overline{b_1 \ldots b_k}$.
+\end{theorem}
+
+Prova: Ambas as equações só são corretas caso $q \times b_1 \ldots b_k = \underbrace{9 \ldots 9}_{k\text{ noves}}$
+
+Podemos usar esse teorema para transformar dízimas do sistema direitista em dízimas do sistema esquerdista de forma mais simples. Veja:
+
+\bigskip
+
+Qual é a representação de $0,\overline{567}$ no sistema esquerdista?
+
+\bigskip
+
+Uma opção seria descobrir a fração que tem como resultado $0,\overline{567}$:
+
+\begin{equation*}
+    x = 0,\overline{567} \implies 1000x = 567,\overline{567}
+\end{equation*}
+\begin{equation*}
+    1000x - x = 567,\cancel{\overline{567}} - 0,\cancel{\overline{567}} = 567
+\end{equation*}
+\begin{equation*}
+    \implies  = 0,\overline{567} = \frac{567}{999}
+\end{equation*}
+
+E realizar a divisão:
+
+\[
+    \begin{array}{rr}
+        \ldots 00567& |\underline{\hphantom{0}999}\\
+        \underline{-2997}&           \overline{243}3\\
+        \ldots 99757\hphantom{1}&           \\
+        \underline{-2997}\hphantom{1}&      \\
+        \ldots 99676\hphantom{22}&          \\
+        \underline{-3996}\hphantom{22}&     \\
+        \ldots 99568\hphantom{333}&         \\
+        \underline{-1998}\hphantom{333}&    \\
+        \ldots 99757\hphantom{4444}&
+    \end{array}
+\]
+
+\begin{equation*}
+\implies 0,\overline{567} = \overline{243}3
+\end{equation*}
+
+\bigskip
+
+Uma forma mais simples é obter o valor a partir do Teorema 1, da seguinte forma:
+
+\begin{equation*}
+    a = 0,\overline{567} \implies -a = \overline{567}
+\end{equation*}
+
+Usa-se o Teorema 1 para obter a representação do oposto do valor desejado no sistema esquerdista, agora, basta obter o inverso aditivo de $-a$ pela equação 6, e portanto:
+
+\begin{equation*}
+    -(-a) = \ldots(9-5)(9-6)(9-7)(9-5)(9-6)(10-7) = \overline{243}3
+\end{equation*}
+
+\bigskip
+
+\begin{equation*}
+\implies 0,\overline{567} = \overline{243}3
+\end{equation*}
+
+Para números mais complexos, basta separar a dízima e realizar o processo, por exemplo:
+
+\bigskip
+
+Qual a representação de $12,34\overline{567}$ no sistema esquerdista?
+
+\begin{equation*}
+    12,34\overline{567} = 12,34 + 0,00\overline{567} = 12,34 + 0,\overline{567} \times 10^{-2}
+\end{equation*}
+
+Como já visto, $0,\overline{567} = \overline{243}3$, logo:
+
+\begin{equation*}
+     = 12,34 + \overline{243}3 \times 10^{-2} = 12,34 + \ldots24324,33
+\end{equation*}
+
+\[
+    \begin{array}{@{}B1}
+                \ldots 24324,33\\
+                {} + 12,34 \\ \hline
+                \ldots 24336,67
+    \end{array}
+\]
+
+\begin{equation*}
+    \implies 12,34\overline{567} = \overline{243}36,67
+\end{equation*}
+
+E dessa forma, qualquer número racional do sistema direitista pode ser escrito no sistema esquerdista.
+
+\begin{theorem}
+    Todo número no sistema esquerdista com uma dízima periódica pertence aos racionais
+\end{theorem}
+
+Prova:
+
+\begin{equation*}
+    \text{Seja }x = \overline{a_{k} \ldots a_1} \implies 10^kx=\overline{a_{k} \ldots a_1}\underbrace{0 \ldots 0}_{k\text{ zeros}}
+\end{equation*}
+
+\begin{equation*}
+    x - 10^k x = \cancel{\overline{a_{k} \ldots a_1}} a_{k} \ldots a_1 - \cancel{\overline{a_{k} \ldots a_1}} 0 \ldots 0 = a_{k} \ldots a_1
+\end{equation*}
+
+\begin{equation*}
+    x = \frac{a_{k} \ldots a_1}{-\underbrace{9 \ldots 9}_{k\text{ noves}}}
+\end{equation*}
+
+E portanto, $x$ é racional. Qualquer outro número racional pode ser escrito como a soma de um racional que termine e uma dízima da forma $\overline{a_{k} \ldots a_1}$ multiplicada por uma potência de 10, de forma similar ao que foi feito para encontrar $12,34\overline{567}$ no sistema esquerdista.
+
+\subsubsection{A fórmula de convergência de progressão geométrica}
+
+Sabemos que a soma de todos os elemento de uma progressão geométrica de primeiro termo $a$ e razão $r$ converge para o valor:
+
+\begin{equation*}
+    a + ar + ar^2 + \cdots = \frac{a}{1-r} \text{, para } |r| < 1
+\end{equation*}
+
+No entanto, se ignorarmos a restrição de convergência, podemos usar a fórmula para encontrar a fração que tem como resultado um número esquerdista com dízima. Veja os exemplos:
+
+\begin{equation*}
+    \overline{567} = 567 + 567 \times 10^3 + 567 \times 10^6 + \cdots = \frac{567}{1 - 10^3} = -\frac{567}{999}
+\end{equation*}
+
+\begin{equation*}
+    \implies \overline{567} = -\frac{567}{999}
+\end{equation*}
+
+\bigskip
+
+\begin{equation*}
+    \overline{243}3 = \overline{243} \times 10 + 3
+\end{equation*}
+
+\begin{equation*}
+    \overline{243} = 243 + 243 \times 10^3 + 243 \times 10^6 + \cdots = \frac{243}{1 - 10^3} = -\frac{243}{999}
+\end{equation*}
+
+Logo,
+
+\begin{equation*}
+    \overline{243} \times 10 + 3 = -\frac{243}{999} \times 10 + 3 = -\frac{2430}{999} + 3 = \frac{567}{999}
+\end{equation*}
+
+\begin{equation*}
+    \implies \overline{243}3 =  \frac{567}{999}
+\end{equation*}
+
+\bigskip
+
+\begin{equation*}
+    \overline{243}36,67 = \overline{243} \times 10^2 + 36,67
+\end{equation*}
+
+\begin{equation*}
+    = -\frac{243}{999} \times 10^2 + 36,67 = -\frac{24.300}{999} + \frac{3667}{100} = \frac{45679}{3700}
+\end{equation*}
+
+\begin{equation*}
+    \implies \overline{243}36,67 =  \frac{45679}{3700} = 12,34\overline{567}
+\end{equation*}
+
+
+
+\end{document}
+
+
+
+% referencias
+% pdf sobre bases e sobre a base 3
