@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.7.2)  2 JUL 2022 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.7.2)  3 JUL 2022 12:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -592,232 +592,234 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1
 
+] [2
+
 ]
 Cap\'{\i }tulo 1.
-<imgs/pontos.png, id=23, 473.3685pt x 442.0515pt>
+<imgs/pontos.png, id=27, 473.3685pt x 442.0515pt>
 File: imgs/pontos.png Graphic file (type png)
 <use imgs/pontos.png>
-Package pdftex.def Info: imgs/pontos.png  used on input line 51.
+Package pdftex.def Info: imgs/pontos.png  used on input line 63.
 (pdftex.def)             Requested size: 93.15147pt x 86.9855pt.
-<imgs/pontosAgrupados.png, id=24, 572.1375pt x 501.072pt>
+<imgs/pontosAgrupados.png, id=28, 572.1375pt x 501.072pt>
 File: imgs/pontosAgrupados.png Graphic file (type png)
 <use imgs/pontosAgrupados.png>
-Package pdftex.def Info: imgs/pontosAgrupados.png  used on input line 59.
+Package pdftex.def Info: imgs/pontosAgrupados.png  used on input line 71.
 (pdftex.def)             Requested size: 93.15147pt x 81.57997pt.
-[2
+[3
 
  <./imgs/pontos.png> <./imgs/pontosAgrupados.png>]
-Overfull \hbox (4.72269pt too wide) in paragraph at lines 78--79
+Overfull \hbox (4.72269pt too wide) in paragraph at lines 90--91
 []\OT1/cmr/m/n/10 Que nos diz que exis-tem dois gru-pos de dez e mais cinco pon-tos, se troc^^Sassemos
  []
 
 
-Overfull \hbox (1.25053pt too wide) in paragraph at lines 81--82
+Overfull \hbox (1.25053pt too wide) in paragraph at lines 93--94
 \OT1/cmr/m/n/10 Esse n~ao ^^Se o sis-tema com-pleto, pois com ele po-de-mos re-pre-sen-tar ape-nas n^^Sumeros
  []
 
-<imgs/barra_1.png, id=28, 326.4195pt x 132.495pt>
+<imgs/barra_1.png, id=32, 326.4195pt x 132.495pt>
 File: imgs/barra_1.png Graphic file (type png)
 <use imgs/barra_1.png>
-Package pdftex.def Info: imgs/barra_1.png  used on input line 85.
+Package pdftex.def Info: imgs/barra_1.png  used on input line 97.
 (pdftex.def)             Requested size: 172.5pt x 70.01984pt.
-<imgs/barra_2.png, id=29, 326.4195pt x 132.495pt>
+<imgs/barra_2.png, id=33, 326.4195pt x 132.495pt>
 File: imgs/barra_2.png Graphic file (type png)
 <use imgs/barra_2.png>
-Package pdftex.def Info: imgs/barra_2.png  used on input line 93.
+Package pdftex.def Info: imgs/barra_2.png  used on input line 105.
 (pdftex.def)             Requested size: 172.5pt x 70.01984pt.
-[3 <./imgs/barra_1.png> <./imgs/barra_2.png>]
-<imgs/barra_3.png, id=39, 481.8pt x 333.6465pt>
+[4 <./imgs/barra_1.png> <./imgs/barra_2.png>]
+<imgs/barra_3.png, id=42, 481.8pt x 333.6465pt>
 File: imgs/barra_3.png Graphic file (type png)
 <use imgs/barra_3.png>
-Package pdftex.def Info: imgs/barra_3.png  used on input line 101.
+Package pdftex.def Info: imgs/barra_3.png  used on input line 113.
 (pdftex.def)             Requested size: 172.5pt x 119.4559pt.
- [4 <./imgs/barra_3.png>]
-<imgs/pontosAgrupadosEm3.png, id=43, 473.3685pt x 442.0515pt>
+ [5 <./imgs/barra_3.png>]
+<imgs/pontosAgrupadosEm3.png, id=46, 473.3685pt x 442.0515pt>
 File: imgs/pontosAgrupadosEm3.png Graphic file (type png)
 <use imgs/pontosAgrupadosEm3.png>
-Package pdftex.def Info: imgs/pontosAgrupadosEm3.png  used on input line 133.
+Package pdftex.def Info: imgs/pontosAgrupadosEm3.png  used on input line 145.
 (pdftex.def)             Requested size: 103.50105pt x 96.6513pt.
- [5 <./imgs/pontosAgrupadosEm3.png>] [6] [7] [8]
-Overfull \hbox (1.66725pt too wide) in paragraph at lines 330--331
+ [6 <./imgs/pontosAgrupadosEm3.png>] [7] [8] [9]
+Overfull \hbox (1.66725pt too wide) in paragraph at lines 342--343
 \OT1/cmr/m/n/10 Para a mul-ti-plica^^Xc~ao, pre-ci-sa-mos sa-ber o re-sul-tado de mul-ti-plica^^Xc~oes en-tre d^^S^^Pgitos
  []
 
-[9] [10] [11] [12]
+[10] [11] [12] [13]
 Cap\'{\i }tulo 2.
-[13
+[14
 
 ]
-Underfull \hbox (badness 10000) in alignment at lines 550--616
+Underfull \hbox (badness 10000) in alignment at lines 564--630
 [][] 
  []
 
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 762--762
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 776--776
 
  []
 
-[16] [17]
-Underfull \hbox (badness 10000) in alignment at lines 835--869
+[17] [18]
+Underfull \hbox (badness 10000) in alignment at lines 849--883
 [][] 
  []
 
-[18] [19]
+[19] [20]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1053.
-
-[20]
-
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1075.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1067.
 
 [21]
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1089.
+
+[22]
 Cap\'{\i }tulo 3.
-[22
+[23
 
 ]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1123.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1137.
 
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1169.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1183.
 
-[23]
-Overfull \hbox (4.4729pt too wide) in paragraph at lines 1195--1196
+[24]
+Overfull \hbox (4.4729pt too wide) in paragraph at lines 1209--1210
 []\OT1/cmr/m/n/10 Como ^^Sultimo exem-plo, po-de-mos tamb^^Sem so-mar dois n^^Sumeros sem ter-mina^^Xc~ao: 
  []
 
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1212.
-
-[24]
-
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1251.
-
-
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1300.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1226.
 
 [25]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1356.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1265.
 
-[26] [27]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1462.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1314.
 
-[28]
-Overfull \hbox (0.8599pt too wide) detected at line 1510
+[26]
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1370.
+
+[27] [28]
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1476.
+
+[29]
+Overfull \hbox (0.8599pt too wide) detected at line 1524
 [][][]|[][][]
  []
 
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1518.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1532.
 
-[29] [30]
+[30] [31]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1610.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1624.
 
-[31]
+[32]
 
-LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1663.
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 1677.
 
-[32] [33] [34] [35] [36] [37]
-Overfull \hbox (2.61371pt too wide) in paragraph at lines 1962--1963
+[33] [34] [35] [36] [37] [38]
+Overfull \hbox (2.61371pt too wide) in paragraph at lines 1976--1977
 []\OT1/cmr/m/n/10 para en-con-trar a re-pre-senta^^Xc~ao $\OML/cmm/m/it/10 p$\OT1/cmr/m/n/10 -^^Sadica de $[]$ e $[]$. 
  []
 
-[38] [39] [40] [41] [42] [43]
-<./programa/codigo.pdf, id=178, 614.295pt x 794.97pt>
+[39] [40] [41] [42] [43] [44] [45]
+<./programa/codigo.pdf, id=185, 614.295pt x 794.97pt>
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf>
-Package pdftex.def Info: ./programa/codigo.pdf  used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf  used on input line 2369.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf>
-Package pdftex.def Info: ./programa/codigo.pdf  used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf  used on input line 2369.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<./programa/codigo.pdf, id=181, page=1, 614.295pt x 794.97pt>
+<./programa/codigo.pdf, id=188, page=1, 614.295pt x 794.97pt>
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 1>
-Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2369.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 1>
-Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [44
+ [46
 
 ]
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 1>
-Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 1>
-Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 1>
-Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [45 <./programa/codigo.pdf>]
-<./programa/codigo.pdf, id=207, page=2, 614.295pt x 794.97pt>
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 2>
-Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 2>
-Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 2>
-Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [46 <./programa/codigo.pdf>]
-<./programa/codigo.pdf, id=211, page=3, 614.295pt x 794.97pt>
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 3>
-Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 3>
-Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2306.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: ./programa/codigo.pdf Graphic file (type pdf)
-<use ./programa/codigo.pdf, page 3>
-Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page1 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [47 <./programa/codigo.pdf>]
-<./programa/codigo.pdf, id=227, page=4, 614.295pt x 794.97pt>
+<./programa/codigo.pdf, id=214, page=2, 614.295pt x 794.97pt>
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 2>
+Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 2>
+Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 2>
+Package pdftex.def Info: ./programa/codigo.pdf , page2 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [48 <./programa/codigo.pdf>]
+<./programa/codigo.pdf, id=219, page=3, 614.295pt x 794.97pt>
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 3>
+Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 3>
+Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: ./programa/codigo.pdf Graphic file (type pdf)
+<use ./programa/codigo.pdf, page 3>
+Package pdftex.def Info: ./programa/codigo.pdf , page3 used on input line 2369.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [49 <./programa/codigo.pdf>]
+<./programa/codigo.pdf, id=235, page=4, 614.295pt x 794.97pt>
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 4>
-Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 4>
-Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: ./programa/codigo.pdf Graphic file (type pdf)
 <use ./programa/codigo.pdf, page 4>
-Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2306.
+Package pdftex.def Info: ./programa/codigo.pdf , page4 used on input line 2369.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [48 <./programa/codigo.pdf>] (relatorio.aux)
+ [50 <./programa/codigo.pdf>] (relatorio.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21888 strings out of 478659
- 411811 string characters out of 2845921
- 701228 words of memory out of 3000000
- 39601 multiletter control sequences out of 15000+600000
+ 21891 strings out of 478659
+ 411860 string characters out of 2845921
+ 701340 words of memory out of 3000000
+ 39604 multiletter control sequences out of 15000+600000
  414489 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,19n,89p,787b,662s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lcirclew.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on relatorio.pdf (49 pages, 446992 bytes).
+<C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lcirclew.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/line10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on relatorio.pdf (51 pages, 465227 bytes).
 PDF statistics:
- 319 PDF objects out of 1000 (max. 8388607)
+ 330 PDF objects out of 1000 (max. 8388607)
  1 named destinations out of 1000 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

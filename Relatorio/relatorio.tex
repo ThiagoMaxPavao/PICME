@@ -37,6 +37,18 @@
 \input{titlepage.tex}
 \tableofcontents
 
+\chapter*{Introdução}
+
+Aqui está documentado tudo que foi visto, aprendido e explorado durante o desenvolvimento do projeto pelo período de um ano. O projeto se iniciou no segundo semestre de 2021, em meio à pandemia. Me interessei pelo projeto por sua proposta exótica de estudar um sistema númerico semelhante ao que utilizamos usualmente, porém com uma diferença que muda completamente a forma que diversos números são representados, gerando resultados muito intrigantes.
+
+Tive uma reunião inicial online com o orientador do projeto, Prof. Dr. Lúcio Tunes dos Santos, onde foi decidido o assunto que daria inicio aos estudos: bases. Apesar de já ter tido contato com números em outras bases no ensino fundamental, decidi começar os estudos desde o princípio, estudando o funcionamento do nosso sistema numérico, como converter números entre diferentes bases, como realizar operações em outras bases e algumas bases particulares com propiedades especiais, também fui aconselhado a registrar meus estudos em \LaTeX, um sistema que nunca havia utilizado mas que fui capaz de aprender passo a passo até construir este documento completo.
+
+Continuamos nos reunindo a cada duas semanas, a cada reunião eu tirava eventuais dúvidas e discutíamos o andamento do projeto. Após finalizar o estudo de bases, começei a ler sobre os números esquerdistas, aprendi seu funcionamento, como converter nossos números para este outro sistema e como realizar algumas operações com estes números. Também vi uma aplicação da fórmula de convergência de série geométrica para números neste sistema, algo inusitado e interessante. Todo este trabalho foi desenvolvido até dezembro de 2021.
+
+Retomamos os estudos em março de 2022, com uma reunião presencial com todos os orientados pelo professor. O trabalho agora era aprender os números $p$-ádicos, um sistema semelhante ao esquerdista porém trocando da base dez para outras diversas. Continuamos nos reunindo presencialmente uma vez a cada 2 ou 3 semanas enquanto aprendia mais sobre os $p$-ádicos e relatava meu progresso aqui. Mais próximo do fim, desenvolvi um programa em Python para automatizar a procura por inteiros $p$-ádicos usando os métodos aprendidos durante o semestre.
+
+As atividades desenvolvidas durante este primeiro semestre de 2022 portanto, se encontram no Capítulo 3 deste documento. Sempre há mais a explorar, apesar do fim do projeto, mais poderia ser desenvolvido no futuro, isto foi detalhado na última Seção do último Capítulo. 
+
 \chapter{Nosso sistema numérico}
 \label{chapter:secaoBases}
 
@@ -102,7 +114,7 @@ Agora é possível saber que a barra mede entre 7 e 8 décimos de metro, para ob
     \caption{Barra com a divisão em centésimos de metro e ampliada}
 \end{figure}
 
-Note que com mais 5 centésimos de metro completa-se a medida da barra e portanto a barra mede 7 décimos + 5 centésimos de metro = 0,75 metros. Se não tivéssemos conseguido uma medida exata com centésimos poderíamos dividir novamente em dez, visualizando milésimos e assim por diante.
+Note que com mais 5 centésimos de metro completa-se a medida da barra e portanto a barra mede 7 décimos + 5 centésimos de metro = 0,75 metros. Se não tivéssemos conseguido uma medida exata com centésimos, poderíamos dividir novamente em dez, visualizando milésimos e assim por diante.
 
 Com isso podemos representar qualquer número real, que pode ter infinitos algarismos para a direita da vírgula. De forma geral, um número real $A$ qualquer representa a quantidade:
 
@@ -118,7 +130,7 @@ a_{n} \times 10^{n} + a_{n-1} \times 10^{n-1} + \cdots + a_{1} \times 10^1 + a_{
 
 \section{Por que dez?}
 
-Para contar o número de pontos da primeira figura formamos grupos de dez pontos, tornando fácil identificar a quantidade, também foi comentado que para quantidades maiores que cem pontos, seria necessário primeiro formar grupos de cem e assim por diante. Para medir a barra, cada intervalo foi divido em dez repetidas vezes, nos dando décimos, centésimos, milésimos e assim por diante. Todos esses números são potências de dez, mas por que essa quantidade foi escolhida?
+Para contar o número de pontos da primeira figura formamos grupos de dez pontos, tornando fácil identificar a quantidade, também foi comentado que para quantidades maiores que cem pontos, seria necessário primeiro formar grupos de cem e assim por diante. Posteriormente, Para medir a barra, cada intervalo foi divido em dez repetidas vezes, nos dando décimos, centésimos, milésimos e assim por diante. Todos esses números são potências de dez, mas por que essa quantidade foi escolhida?
 
 Essa quantidade é denominada base e é uma característica importantíssima do sistema, sem saber em que base um número foi escrito é impossível saber a quantidade que ele representa, escrevemos a base de um número como um subscrito, e por convenção um número sem subscrito está escrito na base dez.
 
@@ -142,14 +154,14 @@ a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b}=
 \begin{equation*}
 a_{n} \times b^{n} + a_{n-1} \times b^{n-1} + \cdots + a_{1} \times b^1 + a_{0} \times b^0 + a_{-1} \times b^{-1} + a_{-2} \times b^{-2} + \cdots=
 \end{equation*}
-\begin{equation}
+\begin{equation} \label{eq:numeroReal}
 \sum_{i=n}^{-\infty}a_i \times b^i
 \end{equation}
 
 Note que o número de algarismos diferentes necessários para escrever um número na base $b$ também é $b$, dado que $10_b = b^1 \times 1 + b^0 \times 0 = b$ e $10_b$ é o primeiro número de dois dígitos contando do 0. Para a base 3, por exemplo, temos os algarismos 0,1,2. Para uma base maior que dez, temos que adicionar símbolos, usualmente são adicionadas as letras maiúsculas. Para a base 16, por exemplo, podemos definir os algarismos como 0-9,A,B,C,D,E,F, onde:
 
 \begin{equation*}
-A_{16} = 10; B_{16} = 11; C_{16} = 12; D_{16} = 13; E_{16} = 14; F_{16} = 15
+A_{16} = 10;\ B_{16} = 11;\ C_{16} = 12;\ D_{16} = 13;\ E_{16} = 14;\ F_{16} = 15
 \end{equation*}
 
 \section{Conversão entre bases}
@@ -295,7 +307,7 @@ Calcular $101_3 - 12_3$
     \end{array}
 \]
 
-$2_3>1_3$ portanto precisamos emprestar, como não é possível emprestar diretamente do 0, emprestamos do 1 na terceira casa
+$2_3>1_3$ portanto precisamos emprestar, como não é possível emprestar diretamente do 0, emprestamos do 1 da terceira casa
 
 \[
     \begin{array}{@{}B1}
@@ -418,10 +430,10 @@ Sabendo disso, faria sentido ter computadores que trabalhassem em base três, e 
 
 \section{A base 12}
 
-Uma característica não comentada até o momento são as dízimas periódicas, qualquer número racional pode ser escrito como a divisão $p/q$ com p e q inteiros e coprimos. Sabe-se que essa divisão pode terminar ou repetir infinitamente, por exemplo, em base 10:
+Uma característica não comentada até o momento são as dízimas periódicas, qualquer número racional pode ser escrito como a divisão $p/q$ com $p$ e $q$ inteiros e coprimos. Sabe-se que essa divisão pode terminar ou repetir infinitamente, por exemplo, em base 10:
 
 \begin{equation*}
-\frac{1}{4} = 0,25, \frac{1}{3} = 0,33\ldots
+\frac{1}{4} = 0,25,\ \frac{1}{3} = 0,33\ldots
 \end{equation*}
 
 Note que $1/4$ termina, enquanto $1/3$ é uma dízima periódica.
@@ -429,12 +441,12 @@ Note que $1/4$ termina, enquanto $1/3$ é uma dízima periódica.
 Para saber se uma fração terminará em sua forma decimal basta fatorar $q$, se $q$ é composto apenas por potências de 2 e 5 a fração termina, caso contrário, repete infinitamente, parcial ou completamente. Por exemplo:
 
 \begin{equation*}
-\frac{3}{60} = \frac{1}{20}, 20 = 2^2 \times 5^1
+\frac{3}{60} = \frac{1}{20},\ 20 = 2^2 \times 5^1
 \end{equation*}
 
-Portanto $\frac{3}{60}$ deve terminar. $\frac{3}{60}=0,05$
+Portanto $3/60$ deve terminar. Fazendo a conta temos que $3/60=0,05$.
 
-O 2 e 5 vêm da base escolhida pois dez é divisível por 2 e por 5, 12 é divisível por 2, 3, 4 e 6 e portanto possui muito mais divisores. Por causa disso, diversos números que são dízimas periódicas em base dez terminam em base 12. $1/3 = 0,4_{12}$, $1/6 = 0,2_{12}$, $1/9 = 0,14_{12}$ por exemplo, logo, a base 12 também tem vantagens sobre a base dez e seria mais eficiente em nosso cotidiano.
+O 2 e o 5 vêm da base escolhida, pois dez é divisível por 2 e por 5, 12 é divisível por 2, 3, 4 e 6 e portanto possui muito mais divisores. Por causa disso, diversos números que são dízimas periódicas em base dez terminam em base 12. $1/3 = 0,4_{12}$, $1/6 = 0,2_{12}$, $1/9 = 0,14_{12}$ por exemplo, logo, a base 12 também tem vantagens sobre a base dez e seria mais eficiente em nosso cotidiano.
 
 Apesar de ter uma tabuada maior para decorar, a base 12 traz mais facilidade também nesse aspecto, pois são formados padrões que não se formam na base dez, e que facilitam a memorização.
 
@@ -452,9 +464,9 @@ Surge um padrão 0,3,6,9 na casa das unidades, algo que não ocorre na base dez 
 
 \section{Formalizando}
 
-Conclui-se que nosso sistema numérico é construído para representar qualquer quantidade real, para saber qual é essa quantidade é necessário saber em que base o número foi escrito. Com isso temos que qualquer número $A = \pm a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b}$ representa a quantidade dada pela equação 3, copiada aqui:
+Conclui-se que nosso sistema numérico é construído para representar qualquer quantidade real, para saber qual é essa quantidade é necessário saber em que base o número foi escrito. Com isso temos que qualquer número $A = \pm a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b}$ representa a quantidade dada pela Equação \ref{eq:numeroReal}, copiada aqui:
 
-\begin{equation}
+\begin{equation}\label{eq:numeroReal2}
     \pm a_n a_{n-1} \cdots a_1 a_0 , a_{-1} a_{-2} \cdots _{_b} = \pm \sum_{i=n}^{-\infty}a_i \times b^i
 \end{equation}
 
@@ -525,7 +537,7 @@ Como foi visto, em nosso sistema os números podem ter algarismos infinitamente 
     \ldots0000 = 0
 \end{equation*}
 
-Nota-se que, $\ldots3333$ é um número tal que multiplicado por 3 e somado 1 ao resultado obtemos 0, assim como $-\frac{1}{3}$, logo $-\frac{1}{3}=\ldots3333$. Nesse mesmo exemplo também é possível perceber que -1 no sistema esquerdista é representado por $\ldots999$, pois é o número que somado um nos dá zero.
+Nota-se que, $\ldots3333$ é um número tal que multiplicado por 3 e somado 1 ao resultado obtemos 0, assim como $-1/3$, logo $-1/3=\ldots3333$. Nesse mesmo exemplo também é possível perceber que -1 no sistema esquerdista é representado por $\ldots999$, pois é o número que somado um nos dá zero.
 
 Antes de seguir em frente, é importante notar que qualquer número inteiro não negativo, e números racionais que terminem tem a mesma representação nos dois sistemas, por exemplo:
 
@@ -539,9 +551,11 @@ Lembrando que números racionais terminam quando a fração em sua forma mais si
     \ldots a_2 a_1 a_0 , a_{-1} a_{-2} \ldots a_{-n} = \sum_{i=-n}^{\infty}a_i \times 10^i
 \end{equation}
 
-Note que diferentemente da representação dos números do sistema direitista (Equação 4), não temos o sinal + ou - antes do número, isso será explicado mais a frente porém o fato de que $\ldots 999 = -1$ já nos dá uma dica para a razão.
+Note que diferentemente da representação dos números do sistema direitista (Equação \ref{eq:numeroReal2}), não temos o sinal + ou - antes do número, isso será explicado mais a frente porém o fato de que $\ldots 999 = -1$ já nos dá uma dica para a razão.
 
 \section{Operações}
+
+\subsection{Soma e Multiplicação}
 
 As operações de soma e multiplicação são iguais as usuais, com a exceção de que como todo número no sistema esquerdista obrigatoriamente tem uma terminação a direita, nunca teremos o problema de não ter onde começar a conta, algo que poderia acontecer no sistema usual. Veja alguns exemplos de soma e multiplicação entre números esquerdistas:
 
@@ -621,7 +635,7 @@ Note que uma conta entre dois números que terminem, por exemplo $34 \times 56$,
 
 \subsection{Subtração}
 
-A subtração é feita adicionando-se o inverso aditivo de um número, então, precisamos saber se existe o inverso aditivo de um número no sistema esquerdista. Já vimos que $\ldots 999 + 1 = 0$, e portanto, $\ldots 999$ é o inverso aditivo de 1. Também podemos ver que $\ldots 998$ é o inverso aditivo de 2:
+A subtração é feita adicionando-se o inverso aditivo de um número, então, precisamos saber se existe o inverso aditivo de um número qualquer no sistema esquerdista. Já vimos que $\ldots 999 + 1 = 0$, e portanto, $\ldots 999$ é o inverso aditivo de 1. Também podemos ver que $\ldots 998$ é o inverso aditivo de 2:
 
 \[
     \begin{array}{@{}B1}
@@ -633,7 +647,7 @@ A subtração é feita adicionando-se o inverso aditivo de um número, então, p
 
 De forma geral, um número $A=\ldots a_2 a_1 a_0 , a_{-1} a_{-2} \ldots a_{-n}$ tem o inverso aditivo $-A$ da seguinte forma: 
 
-\begin{equation}
+\begin{equation}\label{eq:invAditivoEsq}
     -A=\ldots (9 - a_2) (9 - a_1) (9 - a_0) , (9 - a_{-1}) (9 - a_{-2}) \ldots (10 - a_{-n}), \text{para } a_{-n} \neq 0
 \end{equation}
 
@@ -659,7 +673,7 @@ $87 - 103 = ?$
     87 - 103 = 87 + (-103)
 \end{equation*}
 
-O inverso aditivo de 103 é encontrado pelo método já mostrado (Equação 6), temos que, para $A = 103 = \ldots000103$
+O inverso aditivo de 103 é encontrado pelo método já mostrado (Equação \ref{eq:invAditivoEsq}), temos que, para $A = 103 = \ldots000103$
 
 \begin{equation*}
     -A = \ldots(9-0)(9-0)(9-0)(9-1)(9-0)(10-3) = \ldots 999897
@@ -688,7 +702,7 @@ Por fim:
 \bigskip
 $103 - 87 = ?$
 
-Novamente pela equação 6, temos que:
+Novamente pela Equação \ref{eq:invAditivoEsq}, temos que:
 
 \begin{equation*}
     -87 = \ldots 99913
@@ -696,7 +710,7 @@ Novamente pela equação 6, temos que:
 
 \[
     \begin{array}{@{}B1}
-                \ldots \carry 9 \carry 9 \carry 913\\
+                \ldots \carry 9 \carry 9 913\\
                 {} + 103 \\ \hline
                  \ldots00016 \\
     \end{array}
@@ -731,7 +745,7 @@ Por fim, também podemos encontrar o inverso aditivo de números com dízima, po
 \bigskip
 $A = \ldots76767630, -A = ?$
 
-Novamente pela equação 6, temos que:
+Novamente pela Equação \ref{eq:invAditivoEsq}, temos que:
 \begin{equation*}
     -A = \ldots(9-7)(9-6)(9-7)(9-6)(10-3)0 = \ldots 232370
 \end{equation*}
@@ -740,9 +754,9 @@ Novamente pela equação 6, temos que:
 
 \subsection{Divisão}
 
-Da mesma forma que com a subtração, a divisão é dada pela multiplicação pelo inverso, então precisamos saber se um número esquerdista $q$ tem um inverso $\frac{1}{q}$. Lembrando que frações que terminam em nosso sistema usual tem o mesmo resultado no sistema esquerdista, por exemplo $\frac{1}{4} = 0,25$ em ambos os sistemas, pois todos os números envolvidos são esquerdistas e direitistas.
+Da mesma forma que com a subtração, a divisão é dada pela multiplicação pelo inverso, então precisamos saber se um número esquerdista $q$ tem um inverso $1/q$. Lembrando que frações que terminam em nosso sistema usual tem o mesmo resultado no sistema esquerdista, por exemplo $1/4 = 0,25$ em ambos os sistemas, pois todos os números envolvidos são esquerdistas e direitistas.
 
-É possível encontrar o inverso de um número realizando o algoritmo de divisão longa que já sabemos, porém com a diferença que a conta é feita da direita para a esquerda, usando o operador módulo.
+É possível encontrar o inverso multiplicativo de um número realizando o algoritmo de divisão longa que já sabemos, porém com a diferença que a conta é feita da direita para a esquerda, usando o operador módulo.
 
 \fbox{\begin{minipage}{300pt}
 
@@ -763,7 +777,7 @@ Expressões desse tipo são essenciais para o algoritimo de longa divisão de n�
 
 \bigskip
 
-Para encontrar o inverso de 3, $\frac{1}{3}$, fazemos a conta da seguinte forma:
+Para encontrar o inverso de 3, $\dfrac{1}{3}$, fazemos a conta da seguinte forma:
 
 \[
     \begin{array}{rr}
@@ -824,7 +838,7 @@ Como o resto se repetiu, não precisamos continuar a divisão. Temos que:
     \end{array}
 \]
 
-E portanto $\frac{1}{3} = \ldots 667$
+E portanto $\dfrac{1}{3} = \ldots 667$
 
 \bigskip
 
@@ -938,7 +952,7 @@ Uma forma mais simples é obter o valor a partir do Teorema 1, da seguinte forma
     a = 0,\overline{567} \implies -a = \overline{567}
 \end{equation*}
 
-Usa-se o Teorema 1 para obter a representação do oposto do valor desejado no sistema esquerdista, agora, basta obter o inverso aditivo de $-a$ pela equação 6, e portanto:
+Usa-se o Teorema 1 para obter a representação do oposto do valor desejado no sistema esquerdista, agora, basta obter o inverso aditivo de $-a$ pela Equação \ref{eq:invAditivoEsq}, e portanto:
 
 \begin{equation*}
     -(-a) = \ldots(9-5)(9-6)(9-7)(9-5)(9-6)(10-7) = \overline{243}3
@@ -1136,7 +1150,7 @@ Como esperado, $419 + 96 = 515$.
 
 \smallskip
 
-Não é prático lembra as somas entre dígitos de cada base em que for necessário fazer uma conta, para evitar isso, podemos utilizar o truque já mencionado. Basta somar os dígitos, caso a soma seja menor que a base o dígito resultante é dado pela própria soma, caso contrário, o dígito resultante é dado pelo resto da divisão da soma pela base e o quociente é ``transportado" para o próximo dígito. 
+Não é prático lembrar das somas entre dígitos de cada base em que for necessário fazer uma conta, para evitar isso, podemos utilizar o truque já mencionado. Basta somar os dígitos, caso a soma seja menor que a base o dígito resultante é dado pela própria soma, caso contrário, o dígito resultante é dado pelo resto da divisão da soma pela base e o quociente é ``transportado" para o próximo dígito. 
 
 Na realidade, o que esta sendo feito com esse truque é a conversão de qualquer número para a base em questão sempre que é necessário, desta forma elimina-se a necessidade de realizar somas em outras bases. Veja o seguinte exemplo, que utiliza esse método:
 
@@ -1300,7 +1314,7 @@ A multiplicação é feita de maneira análoga à que estamos acostumados, mas c
 }
 
 \bigskip
-Também podemos ter um caso com dois números sem terminação, esse caso é mais complexo, pois surge uma soma de infinitos termos. Como não é possível realiza-la, precisamos encontrar um padrão no resultado e generaliza-lo. Veja o exemplo:
+Também podemos ter um caso com dois números sem terminação, esse caso é mais complexo, pois surge uma soma de infinitos termos. Como não é possível realiza-la, precisamos encontrar um padrão no resultado e generalizá-lo. Veja o exemplo:
 
 \bigskip
 \Ovalbox{\begin{minipage}{300pt}
@@ -1689,7 +1703,7 @@ Absurdo!
 
 \bigskip
 
-Ou seja, não existe $x$ que satisfaça o sistema de congruências, e portanto não há representação de $\frac{1}{10}$ nos 5-ádicos. Isso ocorre sempre que $\mdc(b,p) \neq 1$, pois quando isso ocorre, o sistema $b \cdot x \equiv a \ (\modulo p^n)$ para $n=1$ é dado por:
+Ou seja, não existe $x$ que satisfaça o sistema de congruências, e portanto não há representação de $1/10$ nos 5-ádicos. Isso ocorre sempre que $\mdc(b,p) \neq 1$, pois quando isso ocorre, o sistema $b \cdot x \equiv a \ (\modulo p^n)$ para $n=1$ é dado por:
 
 \begin{align*}
     b \cdot x_1 & \equiv a \ (\modulo p)\\
@@ -1698,7 +1712,7 @@ Ou seja, não existe $x$ que satisfaça o sistema de congruências, e portanto n
 
 \bigskip
 
-Novamente obtemos um absurdo, conclui-se então que qualquer racional $\frac{a}{b}, \mdc(a,b) = 1$ tem representação $p$-ádica desde que $\mdc(b,p) = 1$, caso contrário, é necessário escolher outra base para representar o número.
+Novamente obtemos um absurdo, conclui-se então que qualquer racional $a/b,\ \mdc(a,b) = 1$ tem representação $p$-ádica desde que $\mdc(b,p) = 1$, caso contrário, é necessário escolher outra base para representar o número.
 
 \subsection{Os irracionais algébricos}
 
@@ -1935,9 +1949,9 @@ Portanto, encontramos dois números $x_a = \padc{\cdots,6,2,5}{11}$ e $x_b = \pa
 \end{array}
 \]
 
-Então temos as representações de $\sqrt 3$ e $- \sqrt 3$, \textbf{é possível diferenciar as duas?}
+Então temos as representações de $\sqrt 3$ e $- \sqrt 3$.
 
-Não era necessário resolver o sistema novamente para $x_1 = 6$, pois se encontramos $x_i$ na primeira sequência podemos concluir que $p-x_i$ também é solução. \textit{Prova:}
+Não era necessário resolver o sistema novamente para $x_1 = 6$, pois para cada $x_i$ encontrado na primeira sequência podemos concluir que $p-x_i$ também é solução. \textit{Prova:}
 
 Seja $x$ um inteiro tal que $0 \leq x \leq p-1$, $a$ e $b$ inteiros positivos, tal que $a<b$. Se $x^2 \equiv a \ (\modulo b) \implies (b-x)^2 \equiv a \ (\modulo b)$, pois
 
@@ -1963,7 +1977,7 @@ para encontrar a representação $p$-ádica de $\dfrac{-b + \sqrt{b^2-4ac}}{2a}$
 
 \smallskip
 
-Para isso basta resolver o sistema dado pela Equação \ref{eqQuadGeral}, porém, não é fácil resolvê-lo de maneira simples, podemos facilitar o processo com as seguintes manipulações:
+Para isso basta resolver o sistema dado pela Equação \ref{eqQuadGeral}, porém, não é fácil resolvê-lo de maneira direta, podemos facilitar o processo com as seguintes manipulações:
 
 \begin{align*}
     a \cdot x^2 + b \cdot x + c &= 4a^2 \cdot x^2 + 4ab \cdot x + 4ac \\
@@ -2267,7 +2281,7 @@ O método visto para encontrar as representações destes números é o mesmo em
 
 e encontrar diretamente a representação dos zeros de $f(x)$ nos $p$-ádicos ao resolver o sistema de congruências $f(x) \equiv 0 \ (\modulo p^n)$, basta encontrar uma base em que exista solução. 
 
-\subsubsection{O algoritimo}
+\subsubsection*{O algoritimo}
 
 Foram vistos diversos métodos para resolver alguns sistemas de congruências, a forma mais óbvia no entanto seria apenas testar todas as possibilidades. Para resolver um sistema tão geral quanto o dado pela Equação \ref{eq:fdexGeral} esta seria a forma mais natural, o processo é simples: Após definir uma base $p$ para as soluções que vamos procurar sabemos que seus dígitos estão sob a restrição $0 \leq a_i < p$, para todo $i \geq 0$, também temos que $x_1 = a_0$, e portanto, o primeiro termo de qualquer sequência que gere uma solução também está sob a mesma restrição.
 
@@ -2285,14 +2299,63 @@ lembrando da restrição de cada coeficiente do número: $0 \leq a_i < p$, temos
 
 Por fim, basta testar cada uma das possibildades na congruência $f(x_n) \equiv 0 \ (\modulo p^n)$ e dessa forma montar cada sequência que gera uma solução de $f(x) = 0$, nos inteiros $p$-ádicos, dígito a dígito.
 
-Esse algoritimo foi implementando em um programa em Python que se encontra no final deste documento, e no \href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{link do meu github}.
+\subsubsection*{O programa}
 
-\section{asd}
+Este algoritimo foi implementando em um programa em Python que se encontra no final deste documento, e em meu \href{https://github.com/ThiagoMaxPavao/PICME/blob/master/programas/resolveSistemaQualquer.py}{github}. A interação com o usuário é feita como em um terminal, o usuário digita comandos e o programa executa-os.
 
-% \begin{figure}[H]
-% \centering
-% \includegraphics[width=\textwidth]{./programa/codigo.pdf}
-% \end{figure}
+\smallskip
+
+Os comandos oferecidos são:
+
+\bigskip
+
+-\emph{set}: Inicia o modo de definir o polinômio $f(x)$ à ser usado na resolução do sistema de congruência. O polinômio é definido coeficiente por coeficiente começando em $x^0$ e parando quando nada é inserido.
+
+\bigskip
+
+-\emph{solve base n-digits}: Resolve o sistema de congruências $f(x) \equiv 0 \ (\modulo p^n)$, com o polinômio definido no comando \emph{set}, onde $p$ é igual a \emph{base} inserida como primeiro parâmetro do comando. O sistema é resolvido até a potência $p^{\text{n-digits}}$, de forma a encontrar os \emph{n-digits} primeiros digitos das soluções, o segundo parâmetro do comando. Exemplo de uso: \emph{solve 5 10}, resolve o sistema considerando base 5 e encontrando os 10 primeiros dígitos das soluções.
+
+\bigskip
+
+-\emph{solveMin n-solutions n-digits}: Resolve o sistema de congruências $f(x) \equiv 0 \ (\modulo p^n)$, com o polinômio definido no comando \emph{set}, procurando a menor base em que existem \emph{n-solutions} soluções (primeiro parâmetro do comando), usualmente o número de soluções procuradas é igual ao grau do polinômio definido. São encontrados os \emph{n-digits} primeiros digitos das soluções, dado pelo segundo parâmetro do comando. Exemplo de uso: \emph{solveMin 2 10}, resolve o sistema na menor base em que existem duas soluções e encontra os 10 primeiros dígitos destas.
+
+\subsubsection*{Usando o programa}
+
+Com a ajuda computacional do nosso lado podemos de maneira muito mais simples e rápida resolver sistemas de congruências quaisquer, por exemplo: Encontrar os 20 primeiros dígitos de $\sqrt[3]{7}$ nos 5-ádicos.
+
+Com o uso do programa, encontra-se que
+
+\begin{equation*}
+    \sqrt[3]{7} = \padc{\cdots, 4, 2, 4, 4, 4, 2, 1, 3, 2, 0, 0, 0, 3, 1, 1, 2, 2, 1, 3, 3}{5}
+\end{equation*}
+
+Para isso foi necessário resolver o sistema $x^3 - 7 \equiv 0 \ (\modulo 5^n)$, para esta base somente é encontrada uma solução, então podemos assumir que esta é a representação de $\sqrt[3]{7}$ nos $5$-ádicos, no entanto a forma do polinômio sugere que deveriam haver três soluções. Com o uso do comando \emph{solveMin}, descobre-se que para $p=19$ o sistema conta com 3 soluções distintas:
+
+\begin{align*}
+    x_a &= \padc{\cdots, 9, 12, 12, 16, 14, 18, 11, 3, 6, 12, 8, 10, 12, 9, 16, 8, 4, 1, 13, 4 }{19}\\
+    x_b &= \padc{\cdots, 12, 12, 2, 14, 2, 2, 18, 13, 10, 3, 12, 11, 4, 4, 11, 9, 1, 7, 5, 6 }{19}\\
+    x_c &= \padc{\cdots, 15, 13, 3, 7, 1, 16, 8, 2, 2, 2, 16, 16, 2, 4, 10, 1, 13, 10, 0, 9 }{19}
+\end{align*}
+
+Em nosso sistema usual, encontra-se que $x^3 - 7 = 0$, tem como solução $\sqrt[3]{7}$ e outras duas soluções complexas, então $x_a$, $x_b$ e $x_c$ são representações destes números nos $19$-ádicos.
+
+\section{Considerações finais}
+
+Não foi possível desenvolver o trabalho mais do que isso, porém ainda há muito a explorar. Três pontos que se destacam sobre como o projeto poderia seguir seu curso:
+
+Compreender melhor o significado das multiplas soluções do sistema de congruências em relação às raízes que encontramos em nosso sistema, por exemplo, quando encontramos a representação de $\sqrt3$, também encontramos a representação de $-\sqrt3$, no entanto ainda não entendo ao certo como diferenciá-las ou sequer se há sentido em tentar fazer isso. Temos dois números que elevados ao quadrado resultam em três e sabemos que um é o inverso aditivo do outro, existe alguma diferença que permite denominar um dos números de $+\sqrt3$ e o outro $-\sqrt3$?
+
+Estudar sobre o módulo no conjunto dos $p$-ádicos. Um módulo pode ser definido de diversas formas, desde que satisfaça algumas condições, para números $p$-ádicos existe um módulo definido de uma maneira particular, e acredito que ele seja muito útil para auxiliar na manipulação de números $p$-ádicos.
+
+Por fim, o estudo se seguiria explorando o conjunto dos racionais $p$-ádicos. Tudo visto até agora sobre $p$-ádicos foi, na verdade, uma pequena parte desse fascinante conjunto de números. Os racionais $p$-ádicos se diferenciam dos inteiros pois permitem potências negativas de $p$ em sua representação, isso possivelmente elimina os problemas que surgem ao tentarmos representar certos números em bases específicas nos inteiros $p$-ádicos, então merece ser estudado.
+
+Sobretudo, poder desenvolver este trabalho foi uma honra e gostaria de agradeçer ao meu orientador no projeto, Prof. Dr. Lúcio dos Santos por seu tempo e sabedoria oferecida durante nossas reuniões, ao PICME e a todos que tornaram essa oportunidade, uma realidade. 
+
+\vfill
+
+\emph{``Em algum lugar, alguma coisa incrível está esperando para ser descoberta.''}
+
+{\raggedleft - Carl Sagan\quad\par} 
 
 
 

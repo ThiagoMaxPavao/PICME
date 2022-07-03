@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1656790900 "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1656790903
+["pdflatex"] 1656861136 "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1656861139
   "C:/Users/thipa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1656790058 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/thipa/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1656785457 9769966 835c68bee24d3c76ab98376faf56f64d ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
@@ -30,6 +30,7 @@
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1247596666 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
+  "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1247596667 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1247596666 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -174,7 +175,7 @@
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty" 1636710260 10214 00ce62e730d0cfe22b35e8f1c84949c7 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" 1656790892 92814 12f94d03d680b54931cb586611048ed9 ""
+  "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" 1656861134 100451 1faf0b466f8d84bce283cb9b2960ea3e ""
   "imgs/barra_1.png" 1635855314 2130 6736a04e899dcdec3e0b0dcfbefdb7ab ""
   "imgs/barra_2.png" 1635856700 2641 4eea1a31e79c0f94020fcfb3ad7e3c16 ""
   "imgs/barra_3.png" 1635858395 10414 f1f13b501f8c4e70895f5e3dc9323793 ""
@@ -183,9 +184,9 @@
   "imgs/pontosAgrupadosEm3.png" 1635862928 32416 b4addd73131929cb71321613740145d8 ""
   "imgs/university.png" 1655044422 8922 df0b8b5b8983bab9173fc091e1689fb3 ""
   "programa/codigo.pdf" 1656787992 61722 4de13118b2ef50c52105f8d32cb460bd ""
-  "relatorio.aux" 1656790902 5808 5dc247e507f2216d44bac906ea5dce40 "pdflatex"
-  "relatorio.tex" 1656790892 92814 12f94d03d680b54931cb586611048ed9 ""
-  "relatorio.toc" 1656790902 2099 162f1b7541efa6dad99832cddbaf2c98 "pdflatex"
+  "relatorio.aux" 1656861138 6046 24ace32a216670acd58b6df77d610cc2 "pdflatex"
+  "relatorio.tex" 1656861134 100451 1faf0b466f8d84bce283cb9b2960ea3e ""
+  "relatorio.toc" 1656861138 2146 efbbd95189aecc3e902abe7b859fff17 "pdflatex"
   "titlepage.tex" 1655118060 627 c256310154bbbe3dc253a52a811023b9 ""
   (generated)
   "relatorio.aux"
