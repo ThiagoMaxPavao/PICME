@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1656861136 "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1656861139
+["pdflatex"] 1656964930 "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1656964933
   "C:/Users/thipa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1656790058 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/thipa/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1656785457 9769966 835c68bee24d3c76ab98376faf56f64d ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233955448 1004 54797486969f23fa377b128694d548df ""
@@ -175,7 +175,7 @@
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/tools/calc.sty" 1636710260 10214 00ce62e730d0cfe22b35e8f1c84949c7 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388494052 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/thipa/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1636284872 56029 3f7889dab51d620aa43177c391b7b190 ""
-  "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" 1656861134 100451 1faf0b466f8d84bce283cb9b2960ea3e ""
+  "c:/Users/thipa/Documents/Thiago/Unicamp/PICME/Relatorio/relatorio.tex" 1656964928 100445 d41cf90781926cdc52df62e07c12f3f6 ""
   "imgs/barra_1.png" 1635855314 2130 6736a04e899dcdec3e0b0dcfbefdb7ab ""
   "imgs/barra_2.png" 1635856700 2641 4eea1a31e79c0f94020fcfb3ad7e3c16 ""
   "imgs/barra_3.png" 1635858395 10414 f1f13b501f8c4e70895f5e3dc9323793 ""
@@ -184,9 +184,9 @@
   "imgs/pontosAgrupadosEm3.png" 1635862928 32416 b4addd73131929cb71321613740145d8 ""
   "imgs/university.png" 1655044422 8922 df0b8b5b8983bab9173fc091e1689fb3 ""
   "programa/codigo.pdf" 1656787992 61722 4de13118b2ef50c52105f8d32cb460bd ""
-  "relatorio.aux" 1656861138 6046 24ace32a216670acd58b6df77d610cc2 "pdflatex"
-  "relatorio.tex" 1656861134 100451 1faf0b466f8d84bce283cb9b2960ea3e ""
-  "relatorio.toc" 1656861138 2146 efbbd95189aecc3e902abe7b859fff17 "pdflatex"
+  "relatorio.aux" 1656964933 6046 24ace32a216670acd58b6df77d610cc2 "pdflatex"
+  "relatorio.tex" 1656964928 100445 d41cf90781926cdc52df62e07c12f3f6 ""
+  "relatorio.toc" 1656964933 2146 efbbd95189aecc3e902abe7b859fff17 "pdflatex"
   "titlepage.tex" 1655118060 627 c256310154bbbe3dc253a52a811023b9 ""
   (generated)
   "relatorio.aux"
